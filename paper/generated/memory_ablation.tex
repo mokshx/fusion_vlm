@@ -1,0 +1,22 @@
+\begin{tabular}{lllrrrrc}
+\toprule
+Model & Backend & Flags & Load & Median & RSS & Footpr. & Same \\
+ & & & (s) & (ms) & (GiB) & (GiB) & answers \\
+\midrule
+LFM2.5-VL-450M & CPU & \texttt{default} & 0.4 & 1020 & 1.09 & 0.71 & 30/30 \\
+ & CPU & \texttt{-{}-no-mmap} & 0.4 & 1125 & 0.87 & 0.84 & 30/30 \\
+ & CPU & \texttt{-{}-no-repack} & 0.4 & 1295 & 0.77 & 0.38 & 30/30 \\
+ & CPU & \texttt{-{}-no-mmap -{}-no-repack} & 0.4 & 1365 & 0.76 & 0.73 & 30/30 \\
+\midrule
+LFM2.5-VL-450M & Metal & \texttt{default} & 0.4 & 119 & 0.70 & 0.40 & 30/30 \\
+ & Metal & \texttt{-{}-no-mmap} & 0.4 & 120 & 0.84 & 0.89 & 30/30 \\
+\midrule
+LFM2.5-VL-3B & CPU & \texttt{default} & 2.7 & 5071 & 6.42 & 3.72 & 30/30 \\
+ & CPU & \texttt{-{}-no-mmap} & 1.7 & 5471 & 4.29 & 4.24 & 30/30 \\
+ & CPU & \texttt{-{}-no-repack} & 0.8 & 6270 & 3.92 & 1.20 & 30/30 \\
+ & CPU & \texttt{-{}-no-mmap -{}-no-repack} & 1.0 & 6161 & 3.92 & 3.86 & 30/30 \\
+\midrule
+LFM2.5-VL-3B & Metal & \texttt{default} & 0.8 & 576 & 3.72 & 1.09 & 30/30 \\
+ & Metal & \texttt{-{}-no-mmap} & 1.2 & 560 & 4.25 & 4.27 & 30/30 \\
+\bottomrule
+\end{tabular}

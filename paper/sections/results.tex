@@ -1,0 +1,95 @@
+\section{Results}
+\label{sec:results}
+
+\subsection{Pilot study}
+\label{sec:pilot}
+Before running the full grid we tested the pipeline on 30 frames from UR Fall: 10 \pd{} (five from the side camera, five from the ceiling camera), 10 hard negatives (crouching, kneeling, bending, sitting on a chair or bed, lying on a bed or sofa) and 10 normal frames, one frame per sequence and every frame checked by eye. We ran LFM2.5-VL-450M, LFM2.5-VL-3B and Qwen3.5-2B at Q8\_0 with all three prompts. The pilot is too small for conclusions about the models: the 3\,B model's hard-negative false-alarm rate with prompt~\promptA{}, 2/10, has a 95\% bootstrap interval of \PilotLargeAFaHardCI, and a perfect 10/10 recall has a 95\% Wilson interval of \PilotRecallWilsonCI. We report it because it shaped the protocol and the prompt set.
+
+\begin{table}[t]
+\centering
+\caption{Pilot study on 30 UR Fall frames (10 per class), default operating point, Q8\_0. FA = false alarms. AUROC is computed from $p_\text{yes}$. Too small for model comparisons; reported because it shaped the protocol.}
+\label{tab:pilot}
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\input{generated/pilot_accuracy.tex}
+\end{table}
+
+Four observations carried over into the design. First, output format was not a problem: all \PilotNAnswers{} answers across models, prompts and backends began with ``yes'' or ``no'' (\PilotNLenient{} needed lenient parsing, \PilotNUnparsed{} were unparsed), so we did not need constrained decoding. Second, prompt wording changed the false-alarm rate more than model size did (Table~\ref{tab:pilot}). The detailed definition in prompt~\promptB{} raised the 3\,B model's hard-negative false alarms from \PilotLargeAFaHard{} to \PilotLargeBFaHard{} and made the 450\,M model answer ``yes'' to \PilotSmallBFaNormal{} frames of people simply standing or walking. Listing the excluded postures seems to prime the model toward them. This led us to add prompt~\promptBtwo{}, which defines \pd{} by one physical criterion and names no excluded posture. The effect of \promptBtwo{} depended on the model. It removed every hard-negative false alarm for Qwen3.5-2B (\PilotQwenBtwoFaHard{}, against \PilotQwenAFaHard{} with \promptA), brought the 3\,B LFM model back to \PilotLargeBtwoFaHard{}, and did not help the 450\,M model (\PilotSmallBtwoFaNormal{} normal frames flagged), whose $p_\text{yes}$ on standing people stayed just above 0.5. No single prompt was best for all three models. Third, with prompt~\promptA{} all three models ranked every \pd{} frame above every negative (AUROC \PilotLargeAAuroc{}), so their errors came from where the default answer places the threshold rather than from an inability to separate the classes. This is why we report a calibrated operating point. Fourth, answers were identical across backends: \PilotCpuGpuAgree{} answers matched between CPU and Metal, and \PilotQeightBfAgree{} between Q8\_0 GGUF and bf16 Transformers for the 450\,M model, the one difference being a frame with $p_\text{yes}$ close to 0.5.
+
+The labelling check also mattered. UR Fall's depth-based annotation marks a frame as ``lying on the ground'' from the person's height above the floor. Viewing the candidates showed that the ``lying'' frames in its activity-of-daily-living sequences mix lying on a bed or sofa with deliberate lying on the floor. Under our policy the first are hard negatives and the second are \pd{}. All three models flagged all nine deliberate floor-lying frames under every prompt (\PilotFloorHits{} answers). These frames were filmed in rooms other than the one where all UR Fall falls take place, and with prompt~\promptA{} the same models rejected the standing people filmed in those rooms (\PilotSameRoomNormalRejectA{} answers), which is early evidence that the models respond to posture rather than recognising the fall room.
+
+On an \PilotCpu{} laptop, used here only to validate the measurement pipeline, a decision took a median of \PilotSmallCpuMedianMs\,ms (LFM 450\,M), \PilotLargeCpuMedianMs\,ms (LFM 3\,B) and \PilotQwenCpuMedianMs\,ms (Qwen 2\,B) on 10 CPU threads, and \PilotSmallGpuMedianMs, \PilotLargeGpuMedianMs{} and \PilotQwenGpuMedianMs\,ms on the integrated GPU (Table~\ref{tab:pilot_eff}). Qwen3.5-2B encodes the same frame into more tokens than the LFM models, which offsets its smaller language model. On the CPU, prefill (vision encoding and prompt processing) accounted for \PilotSmallCpuPrefillPct--\PilotLargeCpuPrefillPct\% of the time while decoding the one-word answer took a median of \PilotSmallCpuDecodeMs\,ms (450\,M) and \PilotLargeCpuDecodeMs\,ms (3\,B), which suggests that input resolution will be the main lever on latency.
+
+\begin{table}[t]
+\centering
+\caption{Pilot efficiency on an \PilotCpu{} (\PilotRamGB\,GB, macOS \PilotOs, llama.cpp b\PilotLlamaBuild), prompt~\promptA, 30 timed requests after 3 warm-ups. Validates the pipeline only; edge results are in Table~\ref{tab:efficiency}.}
+\label{tab:pilot_eff}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\input{generated/pilot_efficiency.tex}
+\end{table}
+
+\subsection{RQ1: accuracy versus model size, quantization, resolution and frames}
+\pending{Main accuracy table: one row per configuration on the test split, with F1, recall, FAR (hard negatives, normal) at default and calibrated operating points, AUROC, 95\% CIs. Then marginal plots: F1 versus parameters (one line per quantization), F1 versus resolution, F1 versus frames per decision.}
+
+\pending{Text: size effect within LFM2.5-VL; quantization effect (expect Q8\_0 $\approx$ F16; Q4\_K\_M cost per size); resolution effect and its interaction with model size; whether 4/8 frames help and whether they help more on hard negatives.}
+
+\subsection{RQ2: latency, memory and power on edge devices}
+\begin{table*}[t]
+\centering
+\caption{Efficiency on the edge devices. \pending{generate from results}}
+\label{tab:efficiency}
+\begin{tabular}{lllrrrrrrr}
+\toprule
+Device & Model & Quant & Res. & Median (ms) & p95 (ms) & TTFT (ms) & Peak RSS (GiB) & Power (W) & Streams \\
+\midrule
+\multicolumn{10}{c}{\pending{rows}} \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\pending{Text: latency scaling with image tokens; memory floor per model; energy per decision; streams per device at 1\,Hz.}
+
+\subsection{RQ3: Pareto frontiers}
+\begin{figure}[t]
+\centering
+\fbox{\parbox[c][4.5cm][c]{0.9\columnwidth}{\centering\pending{Figure: F1 (calibrated) versus p95 latency on Jetson Orin Nano; Pareto-optimal points highlighted; pose baseline marked.}}}
+\caption{Accuracy--latency trade-off on the Jetson Orin Nano. \pending{}}
+\label{fig:pareto_latency}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\fbox{\parbox[c][4.5cm][c]{0.9\columnwidth}{\centering\pending{Figure: F1 (calibrated) versus peak memory.}}}
+\caption{Accuracy--memory trade-off. \pending{}}
+\label{fig:pareto_memory}
+\end{figure}
+
+\pending{Text: which configurations are Pareto-optimal on each device; where the pose baseline sits.}
+
+\subsection{RQ4: hard negatives}
+\begin{table}[t]
+\centering
+\caption{False-alarm rate (\%) per hard-negative subtype for the Pareto-optimal configurations and the pose baseline. \pending{}}
+\label{tab:hardneg}
+\begin{tabular}{lccccc}
+\toprule
+Config & Crouch & Kneel & Bend & Sit & Lie (furn.) \\
+\midrule
+\multicolumn{6}{c}{\pending{rows}} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\pending{Text: which subtypes cause most alarms (pilot suggests kneeling / hands-and-knees and crouching); effect of prompt and of temporal context on each subtype; accuracy by viewpoint (overhead vs. oblique).}
+
+\subsection{Bounding-box output}
+\pending{For the best configuration only: prompt for a box around the person who is down; report how often the box overlaps the annotated person (IoU $\geq 0.5$) and the latency cost of the longer output.}
+
+\subsection{Failure cases}
+\begin{figure*}[t]
+\centering
+\fbox{\parbox[c][4cm][c]{0.95\textwidth}{\centering\pending{Figure: grid of missed falls and hard-negative false alarms for the recommended configurations. Faces blurred. Caption must state the source dataset licence (UR Fall and Le2i frames: CC BY-NC-SA).}}}
+\caption{Typical failures. \pending{}}
+\label{fig:failures}
+\end{figure*}

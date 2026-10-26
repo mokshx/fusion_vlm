@@ -218,3 +218,18 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# --- fusion_vlm ---
+models/
+data/raw/
+data/interim/
+data/benchmark/**/frames/
+dist/
+results/**/server-*.log
+results/**/aborted_*/
+paper/*.pdf
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.log
+paper/*.out

@@ -1,0 +1,14 @@
+\begin{tabular}{llrrrr}
+\toprule
+Model (Q8\_0) & Backend & Median & p95 & Peak RSS & Streams \\
+ & & (ms) & (ms) & (GiB) & @1\,Hz \\
+\midrule
+LFM2.5-VL-450M & CPU, 10 thr. & 916 & 972 & 1.08 & 1 \\
+LFM2.5-VL-3B & CPU, 10 thr. & 4270 & 4464 & 6.42 & 0 \\
+Qwen3.5-2B & CPU, 10 thr. & 4967 & 5132 & 4.75 & 0 \\
+\midrule
+LFM2.5-VL-450M & Metal GPU & 112 & 116 & 0.70 & 8 \\
+LFM2.5-VL-3B & Metal GPU & 530 & 537 & 3.73 & 1 \\
+Qwen3.5-2B & Metal GPU & 523 & 536 & 2.82 & 1 \\
+\bottomrule
+\end{tabular}

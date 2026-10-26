@@ -1,0 +1,61 @@
+\section{Benchmark}
+\label{sec:benchmark}
+
+\subsection{Source datasets}
+No public dataset records falls in industrial settings with a licence that permits research use, so we build the benchmark from four indoor fall datasets that are widely used in the fall-detection literature (Table~\ref{tab:datasets}). Each contributes something different. UR Fall \cite{kwolek2014urfall} is small but has per-frame posture labels and a ceiling-mounted camera, which gives an overhead viewpoint similar to many industrial installations. UP-Fall \cite{martinez2019upfall} has 17 subjects and explicit activity labels for sitting, picking up an object and lying, which supply hard negatives. The Multiple Cameras Fall dataset (MCF) \cite{auvinet2010mcfd} films each scenario from eight elevated cameras and labels crouching, sitting and lying on a sofa. Le2i \cite{charfi2013le2i} adds four further indoor scenes. All four datasets show staged falls by actors in homes, offices or laboratories; Section~\ref{sec:limitations} discusses what this means for industrial deployment.
+
+\begin{table*}[t]
+\centering
+\caption{Source datasets. All are indoor and staged. Licence terms as stated on the official distribution pages on 20~October~2026.}
+\label{tab:datasets}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lllllll}
+\toprule
+Dataset & Cameras & Resolution / fps & Viewpoints & Labels used & Licence & Samples used \\
+\midrule
+UR Fall \cite{kwolek2014urfall} & 2 Kinect & $640{\times}480$ / 30 & side; ceiling (falls only) & per-frame lying / not lying & CC BY-NC-SA 4.0 & \pending{n} \\
+UP-Fall \cite{martinez2019upfall} & 2 & $640{\times}480$ / ${\approx}18$ & lateral; frontal (1.82\,m) & activity per trial & none stated & \pending{n} \\
+MCF \cite{auvinet2010mcfd} & 8 IP & $720{\times}480$ / \pending{fps} & elevated, oblique & segment posture codes & none stated & \pending{n} \\
+Le2i \cite{charfi2013le2i} & 1 per scene & $320{\times}240$ / 25 & \pending{verify} & fall start/end frames & CC BY-NC-SA 3.0 & \pending{n} \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\subsection{Labelling policy}
+Each sample receives one of three labels. A sample is \pd{} when a person's torso is lying on the floor or ground, regardless of how the person got there. This includes falls annotated by the source dataset and also sequences in which an actor lies down on the floor on purpose. UR Fall, for example, treats deliberate lying on the floor as an activity of daily living and therefore as a negative. From a single frame the two cannot be told apart, and for a safety alarm both warrant a check, so we label them \pd{} with the subtype \textit{lying\_floor\_deliberate} and report them separately. Readers comparing with earlier UR Fall results should keep this difference in mind. Junca et al.\ met the same ambiguity: a prompt that caught more falls also called deliberate lie-downs falls \cite{junca2026thermal}.
+
+A sample is a \textit{hard negative} when a person is in a low or horizontal posture without the torso on the floor. We record the subtype: crouching, kneeling (including hands and knees), bending over, sitting on a chair, sitting on furniture, sitting on the floor, and lying on a bed or sofa. A sample is \textit{normal} when every visible person is upright (standing or walking).
+
+We exclude transitional frames (mid-fall, getting down, getting up), because their label depends on an arbitrary cut point, and frames in which no person is visible. We label each frame by what it shows, not by the activity name of its source sequence. Candidate frames are proposed automatically from the source annotations and then checked by eye; Section~\ref{sec:pilot} gives an example where this check changed labels.
+
+\subsection{Samples, clips and viewpoints}
+For each source sequence we take at most three frames per label, spaced at least one second apart, to limit near-duplicates. For temporal experiments each sample also has a clip of the 3 or 7 preceding frames, 0.25\,s apart, so that a decision uses 1, 4 or 8 frames ending at the labelled frame; an 8-frame clip covers 1.75\,s. We record each camera's viewpoint as \textit{overhead} (ceiling-mounted, looking down) or \textit{elevated-oblique} / \textit{eye-level}, and report accuracy separately for each.
+
+\subsection{Splits}
+Frames from the same sequence are highly correlated, and the same actor often appears in many sequences. We therefore split by sequence and, where the dataset allows, by subject: no sequence contributes to both the development and test sets. The development set is used only to choose decision thresholds (Section~\ref{sec:thresholds}); all reported numbers come from the test set. The test set is balanced across the three labels. We aim for at least 100 samples per hard-negative subtype, which bounds the 95\% confidence interval of each subtype's false-alarm rate at about $\pm10$ percentage points; where the source data contain fewer, Table~\ref{tab:benchmark} reports the actual count. Table~\ref{tab:benchmark} summarises the final counts.
+
+\begin{table}[t]
+\centering
+\caption{Benchmark composition (test split). \pending{fill from labels files}}
+\label{tab:benchmark}
+\begin{tabular}{llr}
+\toprule
+Label & Subtype & Samples \\
+\midrule
+\pd{} & fall & \pending{n} \\
+ & lying\_floor\_deliberate & \pending{n} \\
+\midrule
+hard negative & crouching & \pending{n} \\
+ & kneeling & \pending{n} \\
+ & bending & \pending{n} \\
+ & sitting (chair / furniture / floor) & \pending{n} \\
+ & lying on furniture & \pending{n} \\
+\midrule
+normal & standing / walking & \pending{n} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Reproducibility}
+UR Fall and Le2i are licensed for non-commercial use with share-alike terms, and UP-Fall and MCF state no licence. We therefore do not redistribute frames. We release the label files (dataset, sequence, camera, frame index, label, subtype, viewpoint, notes) and scripts that download the source data from the official pages and rebuild every sample bit for bit. The UR Fall script fetches only the needed frames from the remote archives with HTTP range requests, which keeps the download to tens of megabytes instead of several gigabytes.

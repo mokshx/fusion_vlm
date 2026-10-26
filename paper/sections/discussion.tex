@@ -1,0 +1,36 @@
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{Deployment recommendations}
+\pending{One paragraph per device class: the recommended configuration (model, quantization, resolution, frames, prompt, threshold), its expected recall and hard-negative FAR with CIs, latency and streams per device. State when the pose baseline is the better choice.}
+
+\subsection{Prompting small models}
+The pilot showed a behaviour that practitioners should know about before they write longer prompts for small models. A prompt that defines the task carefully and lists the cases to exclude reads better to a human, yet it made the 450\,M model answer ``yes'' to nearly every frame, and it tripled the 3\,B model's hard-negative false alarms (from \PilotLargeAFaHard{} to \PilotLargeBFaHard{}). VLMs are known to answer ``yes'' too often when probed with yes/no questions \cite{li2023pope,chan2026yesbias}, and in thermal fall screening a single cautionary sentence in the prompt changed sensitivity substantially \cite{junca2026thermal}. Our pilot suggests that naming the excluded postures strengthens the yes-bias of small models rather than correcting it. A one-sentence criterion (\promptBtwo) was the best prompt for Qwen3.5-2B, worked about as well as the plain question for the 3\,B LFM model, and did not rescue the 450\,M model. The right prompt is therefore a per-model choice, which is why we report every model under every prompt. \pending{Confirm on the full benchmark; report per model whether \promptBtwo{} or \promptA{} is better.} Our working recommendation is to keep prompts for sub-billion-parameter models short and to set the decision threshold on labelled data rather than relying on the model's default answer.
+
+\subsection{Thresholds instead of answers}
+With prompt~\promptA{}, the pilot models ranked every \pd{} frame above every negative, yet their default answers still produced false alarms. The information needed for a better decision was present in $p_\text{yes}$; the default answer simply put the threshold in the wrong place. Token probabilities from neural networks are not necessarily calibrated \cite{guo2017calibration}, so the threshold has to be chosen on labelled data rather than fixed at 0.5. Reading token probabilities costs nothing extra in llama.cpp and most other runtimes, so we recommend that deployments log $p_\text{yes}$ and set a site-specific threshold during commissioning. \pending{Quantify the gap between default and calibrated operating points on the full benchmark, and how stable the threshold is across datasets.}
+
+\subsection{Is a VLM needed?}
+\pending{Compare the pose baseline with the Pareto-optimal VLMs on overall F1 and on each hard-negative subtype; discuss failure modes of each (keypoint detection under occlusion and overhead views versus VLM yes-bias), and the latency gap.}
+
+\subsection{Measuring edge efficiency}
+Two details of our measurement procedure changed results by large factors in the pilot. The first is memory accounting on unified-memory hardware: depending on the metric and on two runtime flags, the same 3\,B model ``used'' between \AblLargeGpuDefaultFpGiB\ and \AblLargeCpuDefaultRssGiB\,GiB (Table~\ref{tab:memory}). Papers that report a single peak-memory number without naming the metric and the runtime settings are hard to compare. Weight repacking alone accounted for about 2.5\,GiB of the 3\,B model's CPU memory, which matters on an 8\,GB board. The second is the state of the device: on battery power and with idle sleep enabled, latency drifted upward by 15--23\% over a 30-minute run and one request stalled for 17 minutes. Neither problem is specific to our setup, and both are easy to miss without per-request logs.
+
+\subsection{Limitations}
+\label{sec:limitations}
+\textit{Domain gap.} All four source datasets are indoor, staged recordings in homes, offices and laboratories, with clean floors, good lighting in most scenes and few occluding objects. Industrial floors add machinery, pallets, high-visibility clothing, hard hats and partial occlusion. We did not evaluate on industrial footage, so our numbers are an upper bound on what to expect in a factory until confirmed on such data.
+
+\textit{Staged events and few actors.} Falls are performed by actors, often onto mattresses (MCF), and each dataset has between one and 17 actors. Real collapses look different from staged falls, and models may partly recognise actors or rooms. The UR Fall falls, for instance, all happen in one room. The pilot's floor-lying frames from other rooms argue against pure scene recognition, but the full benchmark's per-dataset results are the stronger test.
+
+\textit{Single decisions.} We evaluate decisions on single frames or short clips. A deployed system would aggregate decisions over time, for example requiring several consecutive positives, which lowers false alarms at the cost of delay. We do not model this.
+
+\textit{Zero-shot only.} We do not fine-tune any model. Fine-tuning would likely raise accuracy, especially for the smallest models, but would also require the industrial training data that is not publicly available.
+
+\textit{Threshold selection.} The calibrated operating point uses labelled development data from the same datasets as the test set, so it is optimistic about how well a threshold transfers to a new site.
+
+\textit{Model snapshot.} Small VLMs change quickly. Our conclusions apply to the model versions we list; the benchmark and scripts are released so that newer models can be added.
+
+\textit{Licences.} Two source datasets restrict use to non-commercial research and two state no licence. This limits what we can redistribute and may limit commercial reuse of results derived from them.
+
+\subsection{Ethical considerations}
+Camera-based monitoring of workers raises privacy concerns. A \pd{} detector is meant to trigger a check by a person, not to monitor productivity or discipline workers, and edge deployment means video need not leave the site. We used only public datasets collected by other groups and did not record anyone. In figures we blur faces. Any deployment should follow local law on workplace monitoring and involve workers or their representatives.

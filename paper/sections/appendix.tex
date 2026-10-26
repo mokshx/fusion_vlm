@@ -1,0 +1,62 @@
+\section{Prompts}
+\label{app:prompts}
+The prompts are fixed; any change gets a new identifier so that results stay comparable.
+
+\noindent\textbf{Prompt A.}
+\begin{quote}\small
+Is any person fallen or lying on the floor? Answer yes or no.
+\end{quote}
+
+\noindent\textbf{Prompt B.}
+\begin{quote}\small
+You are a workplace safety monitor looking at a camera image. A `person down' is a person whose body is lying on the floor or ground, with the torso roughly horizontal and touching or very close to the floor, for example after a fall or collapse. The following are NOT a person down: standing, walking, bending over, kneeling, crouching or squatting, sitting on the floor or on a chair, lying on a bed, sofa or other furniture, and lying under equipment while visibly doing maintenance work. Is there a person down in this image? Answer with one word: yes or no.
+\end{quote}
+
+\noindent\textbf{Prompt B2.}
+\begin{quote}\small
+A person is `down' only if their torso is lying on the floor or ground. Is any person down? Answer yes or no.
+\end{quote}
+
+\noindent\textbf{Multi-frame prefix} (prepended for $n>1$ frames).
+\begin{quote}\small
+The following $n$ images are consecutive frames from one camera, in time order. Answer about the last frame, using earlier frames as context.
+\end{quote}
+
+\section{Inference settings}
+\label{app:settings}
+llama.cpp server, one instance per configuration:
+\begin{quote}\small\raggedright
+\texttt{llama-server -m <model.gguf>}\\
+\texttt{~~--mmproj <mmproj-F16.gguf>}\\
+\texttt{~~-ngl <0|99> -c 4096 -np 1 -cram 0}\\
+\texttt{~~--no-webui [-t <threads>] [-dev none]}
+\end{quote}
+\texttt{-ngl 0 -dev none} keeps all computation on the CPU, including the vision projector; \texttt{-np 1} uses a single slot; \texttt{-cram 0} disables the host-side prompt cache. Requests use the chat-completions endpoint with images as base64 PNG, \texttt{temperature=0}, \texttt{max\_tokens=16}, \texttt{cache\_prompt=false}, \texttt{logprobs=true}, \texttt{top\_logprobs=10} and streaming. $p_\text{yes}$ is computed from the top-10 log-probabilities of the first generated token, summing tokens that equal ``yes'' or ``no'' after lower-casing and stripping whitespace, and renormalising over the two.
+
+{\sloppy Transformers reference: \texttt{AutoModelFor\allowbreak ImageTextToText} in bf16 (fp16 on GPUs without bf16), the model's chat template, greedy decoding, \texttt{max\_new\_tokens=16}; $p_\text{yes}$ from the softmax over the first-step logits.\par}
+
+\section{Label file format}
+\label{app:labels}
+One CSV row per sample: \texttt{sample\_id}, \texttt{image\_path} (or several, separated by semicolons, for clips), \texttt{label}, \texttt{subtype}, \texttt{viewpoint}, \texttt{dataset}, \texttt{sequence}, \texttt{camera}, \texttt{frame}, \texttt{source\_label} (the source dataset's own annotation), and free-text \texttt{notes}.
+
+\section{Model revisions}
+\label{app:revisions}
+Hugging Face repository revisions (first 12 characters of the commit hash) of the weights used. GGUF files are from the repositories listed; Transformers runs use the original repositories.
+
+\begin{center}\footnotesize
+\begin{tabular}{ll}
+\toprule
+Repository & Revision \\
+\midrule
+LiquidAI/LFM2.5-VL-450M-GGUF & \texttt{1abed04b6fe7} \\
+LiquidAI/LFM2.5-VL-1.6B-GGUF & \texttt{36fc16bc9513} \\
+LiquidAI/LFM2.5-VL-3B-GGUF & \texttt{6f730e9a2c45} \\
+unsloth/Qwen3.5-2B-GGUF & \texttt{f6d5376be1ed} \\
+unsloth/Qwen3.5-4B-GGUF & \texttt{e87f176479d0} \\
+LiquidAI/LFM2.5-VL-450M & \texttt{fc6221ca597f} \\
+LiquidAI/LFM2.5-VL-3B & \texttt{35a118d938ce} \\
+Qwen/Qwen3.5-2B & \texttt{15852e8c1636} \\
+Qwen/Qwen3.5-4B & \texttt{851bf6e806ef} \\
+\bottomrule
+\end{tabular}
+\end{center}

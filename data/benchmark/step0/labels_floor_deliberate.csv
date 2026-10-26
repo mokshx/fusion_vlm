@@ -1,0 +1,10 @@
+sample_id,image_path,label,subtype,viewpoint,dataset,sequence,camera,frame,source_label,hh_ratio,notes
+adl-30-cam0-rgb-310,frames/adl-30-cam0-rgb-310.png,person_down,lying_floor_deliberate,side,urfall,adl-30,0,310,1,0.20084,curled on side; partly out of frame
+adl-31-cam0-rgb-183,frames/adl-31-cam0-rgb-183.png,person_down,lying_floor_deliberate,side,urfall,adl-31,0,183,1,0.23293,
+adl-32-cam0-rgb-154,frames/adl-32-cam0-rgb-154.png,person_down,lying_floor_deliberate,side,urfall,adl-32,0,154,1,0.25304,
+adl-33-cam0-rgb-142,frames/adl-33-cam0-rgb-142.png,person_down,lying_floor_deliberate,side,urfall,adl-33,0,142,1,0.27689,mostly out of frame / occluded
+adl-34-cam0-rgb-140,frames/adl-34-cam0-rgb-140.png,person_down,lying_floor_deliberate,side,urfall,adl-34,0,140,1,0.27719,prone on elbows
+adl-35-cam0-rgb-134,frames/adl-35-cam0-rgb-134.png,person_down,lying_floor_deliberate,side,urfall,adl-35,0,134,1,0.20149,prone
+adl-38-cam0-rgb-275,frames/adl-38-cam0-rgb-275.png,person_down,lying_floor_deliberate,side,urfall,adl-38,0,275,1,0.15564,partly out of frame
+adl-39-cam0-rgb-232,frames/adl-39-cam0-rgb-232.png,person_down,lying_floor_deliberate,side,urfall,adl-39,0,232,1,0.19022,partly out of frame
+adl-40-cam0-rgb-295,frames/adl-40-cam0-rgb-295.png,person_down,lying_floor_deliberate,side,urfall,adl-40,0,295,1,0.20694,partly out of frame

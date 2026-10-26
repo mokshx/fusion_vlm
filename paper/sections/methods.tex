@@ -1,0 +1,48 @@
+\section{Models and Methods}
+\label{sec:methods}
+
+\subsection{Task formulation}
+Given one image, or $n \in \{4, 8\}$ consecutive frames ending at the labelled frame, the system decides whether a person is down. A VLM receives the image(s) and a prompt and generates a short answer. We map the answer to \textit{yes}, \textit{no} or \textit{unparsed} (Section~\ref{sec:parsing}). Because a hard yes/no fixes the operating point at whatever the model happens to prefer, we also read the model's probability of answering ``yes'': the probability mass on ``yes'' tokens at the first generated position, renormalised over ``yes'' and ``no''. This score, $p_\text{yes}$, lets us compute threshold-free metrics and choose operating points (Section~\ref{sec:thresholds}).
+
+\subsection{Models}
+Table~\ref{tab:models} lists the models. The LFM2.5-VL family \cite{amini2025lfm2,liquidai2026lfm25vl450m,liquidai2026lfm25vl3b} covers three sizes built the same way: a SigLIP2 NaFlex vision encoder \cite{tschannen2025siglip2} (86\,M parameters in the smallest model, 400\,M in the other two) feeds a hybrid language model of 350\,M, 1.2\,B or 2.6\,B parameters. Varying size within one family keeps the training recipe and preprocessing roughly constant. Qwen3.5 at 2\,B and 4\,B parameters \cite{qwen2026qwen35} serves as a reference from a different model family. We chose models that run in llama.cpp \cite{gerganov2023llamacpp} on both of our edge devices and carry licences that allow research use. Liquid AI publishes official GGUF exports; Qwen does not, so for Qwen3.5 we use the community GGUF conversions published by Unsloth. Qwen3.5 produces a reasoning trace before answering by default; we disable it so that every model answers directly. Appendix~\ref{app:revisions} lists the exact model revisions. We confirmed that the llama.cpp build we use accepts image input for both model families.
+
+\begin{table*}[t]
+\centering
+\caption{Models evaluated. Disk size is Q8\_0 language-model weights plus the F16 vision projector (GGUF). $^\dagger$Community GGUF conversion (Unsloth); Qwen publishes no official GGUF.}
+\label{tab:models}
+\footnotesize
+\begin{tabular}{lrlllr}
+\toprule
+Model & Params & Language backbone & Vision encoder & Licence & Disk (MiB) \\
+\midrule
+LFM2.5-VL-450M & 0.45\,B & LFM2.5-350M (hybrid) & SigLIP2 NaFlex, 86\,M & LFM Open License 1.0 & 362 + 180 \\
+LFM2.5-VL-1.6B & 1.6\,B & LFM2.5-1.2B (hybrid) & SigLIP2 NaFlex, 400\,M & LFM Open License 1.0 & 1189 + 814 \\
+LFM2.5-VL-3B & 3\,B & LFM2.5-2.6B (hybrid) & SigLIP2 NaFlex, 400\,M & LFM Open License 1.0 & 2742 + 814 \\
+Qwen3.5-2B$^\dagger$ & 2.27\,B & hybrid linear/full attention, 24 layers & ViT, 24 layers & Apache 2.0 & 1919 + 637 \\
+Qwen3.5-4B$^\dagger$ & 4.66\,B & hybrid linear/full attention, 32 layers & ViT, 24 layers & Apache 2.0 & 4275 + 641 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\subsection{Prompts}
+We test three prompts (full text in Appendix~\ref{app:prompts}). Prompt~\promptA{} is a plain question: ``Is any person fallen or lying on the floor? Answer yes or no.'' Prompt~\promptB{} adds a definition of \pd{} and lists the postures that do not count, from kneeling and crouching to lying on furniture or under equipment. Prompt~\promptBtwo{} gives only a one-sentence criterion: ``A person is `down' only if their torso is lying on the floor or ground. Is any person down? Answer yes or no.'' We added \promptBtwo{} after the pilot study (Section~\ref{sec:pilot}) showed that listing the look-alike postures in \promptB{} increased false alarms. Its criterion matches the rule used by the pose baseline. For multi-frame inputs, a fixed prefix states that the images are consecutive frames in time order and asks about the last one.
+
+\subsection{Runtimes and quantization}
+All efficiency measurements and most accuracy runs use llama.cpp \cite{gerganov2023llamacpp} with GGUF weights at three precisions: F16, Q8\_0 (8-bit) and Q4\_K\_M (mostly 4-bit, with some tensors at 6-bit). The vision projector stays at F16 in every configuration, so only the language model's precision varies. We run \texttt{llama-server} with one slot, a fixed context of 4096 tokens and greedy decoding, and send requests through its OpenAI-compatible API. As an unquantized reference we also run each model in bf16 (fp16 on GPUs without bf16 support) with Hugging Face Transformers on a cloud GPU. We do not evaluate ONNX Runtime.
+
+\subsection{Input resolution}
+\label{sec:resolution}
+We resize each frame so that its longest side is the native size, 512 or 256 pixels, using Lanczos filtering, and never upscale. Frames are sent as lossless PNG, so resolution is the only image variable. Note that the model's own preprocessor resizes and tiles the image again before encoding; the number of image tokens therefore depends on both our resizing and the model, and we report it for every configuration.
+
+\subsection{Output parsing}
+\label{sec:parsing}
+We cap generation at 16 tokens. An answer is \textit{strictly} parsed if it begins with ``yes'' or ``no'' (any case, optional punctuation), and \textit{leniently} parsed if exactly one of the two words appears in its first sentence. Anything else is \textit{unparsed} and counted as an error. The gap between strict and lenient parsing measures how well each model follows the format instruction.
+
+\subsection{Decision thresholds}
+\label{sec:thresholds}
+We report results at two operating points. The \textit{default} operating point uses the generated answer, which is equivalent to thresholding $p_\text{yes}$ at roughly 0.5. The \textit{calibrated} operating point thresholds $p_\text{yes}$ at the value that achieves 95\% recall on the development set, because a safety alarm should rarely miss a real event. Choosing this threshold uses labelled data but trains no parameters; we report both so that readers can see how much of each model's error comes from its default bias.
+
+\subsection{Pose-based baseline}
+\label{sec:baseline}
+To test whether a VLM is needed at all, we compare with a keypoint rule. YOLO11 pose models \cite{maji2022yolopose,jocher2024yolo11} (nano and small variants) estimate 17 body keypoints and a bounding box per person. We flag a person as down when (i) the torso axis, from the hip midpoint to the shoulder midpoint, is within $\theta$ degrees of horizontal, (ii) the person's bounding box is at least $r$ times as wide as it is tall, and, for clip inputs, (iii) both conditions hold for at least $N$ consecutive frames. Similar keypoint rules have been used for fall detection before \cite{chen2020openposefall}. We tune $\theta$, $r$ and $N$ on the development set only \pending{report tuned values}. The rule needs no language model and runs at a fraction of a VLM's cost, so the question is whether the VLMs' extra robustness to hard negatives justifies their latency.

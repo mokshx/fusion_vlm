@@ -1,0 +1,31 @@
+sample_id,image_path,label,subtype,viewpoint,dataset,sequence,camera,frame,source_label,hh_ratio,notes
+fall-01-cam0-rgb-137,frames/fall-01-cam0-rgb-137.png,person_down,fall,side,urfall,fall-01,0,137,1,416.31,
+fall-02-cam0-rgb-090,frames/fall-02-cam0-rgb-090.png,person_down,fall,side,urfall,fall-02,0,90,1,460.0804,
+fall-03-cam0-rgb-197,frames/fall-03-cam0-rgb-197.png,person_down,fall,side,urfall,fall-03,0,197,1,571.6125,
+fall-04-cam0-rgb-070,frames/fall-04-cam0-rgb-070.png,person_down,fall,side,urfall,fall-04,0,70,1,482.7619,
+fall-05-cam0-rgb-130,frames/fall-05-cam0-rgb-130.png,person_down,fall,side,urfall,fall-05,0,130,1,441.29,legs raised
+fall-06-cam1-rgb-090,frames/fall-06-cam1-rgb-090.png,person_down,fall,overhead,urfall,fall-06,1,90,,,cam1 frame at 90% of sequence; visually confirmed
+fall-07-cam1-rgb-140,frames/fall-07-cam1-rgb-140.png,person_down,fall,overhead,urfall,fall-07,1,140,,,cam1 frame at 90% of sequence; visually confirmed
+fall-08-cam1-rgb-082,frames/fall-08-cam1-rgb-082.png,person_down,fall,overhead,urfall,fall-08,1,82,,,cam1 frame at 90% of sequence; visually confirmed
+fall-09-cam1-rgb-166,frames/fall-09-cam1-rgb-166.png,person_down,fall,overhead,urfall,fall-09,1,166,,,cam1 frame at 90% of sequence; visually confirmed
+fall-10-cam1-rgb-117,frames/fall-10-cam1-rgb-117.png,person_down,fall,overhead,urfall,fall-10,1,117,,,cam1 frame at 90% of sequence; visually confirmed
+adl-01-cam0-rgb-144,frames/adl-01-cam0-rgb-144.png,hard_negative,crouching,side,urfall,adl-01,0,144,-1,0.44399,
+adl-04-cam0-rgb-098,frames/adl-04-cam0-rgb-098.png,hard_negative,bending,side,urfall,adl-04,0,98,-1,0.5855,bending over to pick up
+adl-07-cam0-rgb-161,frames/adl-07-cam0-rgb-161.png,hard_negative,sitting_chair,side,urfall,adl-07,0,161,-1,0.4739,
+adl-10-cam0-rgb-250,frames/adl-10-cam0-rgb-250.png,hard_negative,lying_furniture,side,urfall,adl-10,0,250,1,0.38034,lying on bed
+adl-14-cam0-rgb-178,frames/adl-14-cam0-rgb-178.png,hard_negative,kneeling,side,urfall,adl-14,0,178,-1,0.5556,low light
+adl-22-cam0-rgb-205,frames/adl-22-cam0-rgb-205.png,hard_negative,lying_furniture,side,urfall,adl-22,0,205,1,0.36442,lying on sofa; low light
+adl-24-cam0-rgb-031,frames/adl-24-cam0-rgb-031.png,hard_negative,crouching,side,urfall,adl-24,0,31,-1,0.5325,"squatting, tying shoe"
+adl-34-cam0-rgb-056,frames/adl-34-cam0-rgb-056.png,hard_negative,kneeling,side,urfall,adl-34,0,56,-1,0.45132,hands and knees
+adl-36-cam0-rgb-210,frames/adl-36-cam0-rgb-210.png,hard_negative,sitting_furniture,side,urfall,adl-36,0,210,-1,0.64814,sitting on bed edge
+adl-37-cam0-rgb-310,frames/adl-37-cam0-rgb-310.png,hard_negative,lying_furniture,side,urfall,adl-37,0,310,1,0.45016,lying on bed
+adl-02-cam0-rgb-055,frames/adl-02-cam0-rgb-055.png,normal,standing,side,urfall,adl-02,0,55,-1,0.95753,"small, in doorway"
+adl-05-cam0-rgb-157,frames/adl-05-cam0-rgb-157.png,normal,standing,side,urfall,adl-05,0,157,-1,0.94413,close to camera
+adl-09-cam0-rgb-065,frames/adl-09-cam0-rgb-065.png,normal,walking,side,urfall,adl-09,0,65,-1,0.96316,
+adl-12-cam0-rgb-142,frames/adl-12-cam0-rgb-142.png,normal,walking,side,urfall,adl-12,0,142,-1,0.99774,low light
+adl-17-cam0-rgb-108,frames/adl-17-cam0-rgb-108.png,normal,standing,side,urfall,adl-17,0,108,-1,0.99487,low light
+adl-26-cam0-rgb-083,frames/adl-26-cam0-rgb-083.png,normal,walking,side,urfall,adl-26,0,83,-1,1.0007,
+adl-28-cam0-rgb-009,frames/adl-28-cam0-rgb-009.png,normal,standing,side,urfall,adl-28,0,9,-1,1.0,
+adl-31-cam0-rgb-035,frames/adl-31-cam0-rgb-035.png,normal,standing,side,urfall,adl-31,0,35,-1,0.99754,
+adl-33-cam0-rgb-030,frames/adl-33-cam0-rgb-030.png,normal,standing,side,urfall,adl-33,0,30,-1,1.0005,
+adl-39-cam0-rgb-053,frames/adl-39-cam0-rgb-053.png,normal,standing,side,urfall,adl-39,0,53,-1,0.99287,in doorway

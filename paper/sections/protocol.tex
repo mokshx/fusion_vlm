@@ -1,0 +1,55 @@
+\section{Evaluation Protocol}
+\label{sec:protocol}
+
+\subsection{Accuracy metrics}
+We treat \pd{} as the positive class and report precision, recall and F1 at both operating points, the area under the ROC curve (AUROC) and the area under the precision--recall curve computed from $p_\text{yes}$, and the false-alarm rate (FAR), the fraction of negatives answered ``yes''. FAR is reported separately for normal frames, for all hard negatives and for each hard-negative subtype, because a single pooled number hides which postures cause alarms. We also report accuracy by camera viewpoint. Confidence intervals are 95\% percentile intervals from a cluster bootstrap that resamples whole source sequences \cite{efron1993bootstrap}, since frames from one sequence are not independent. We use 10,000 bootstrap replicates. When a proportion is 0 or 1 the percentile bootstrap collapses to a zero-width interval, so in that case we report the Wilson score interval instead.
+
+\subsection{Efficiency metrics}
+For each configuration we measure:
+\begin{itemize}
+  \item \textit{End-to-end latency}: wall-clock time from sending the request to receiving the last token, measured by the client. This includes image encoding by the client, transfer to the server, vision encoding, prompt processing and decoding.
+  \item \textit{Time to first token} (TTFT), measured by the client from a streamed response, and the server-side prefill and decode times reported by llama.cpp.
+  \item \textit{Decode throughput} in tokens per second. With one-word answers decoding is a small share of latency, but it matters for the bounding-box variant.
+  \item \textit{Peak memory} (see below), \textit{model size on disk} (language model plus vision projector), and \textit{power}.
+  \item \textit{Streams per device}: the number of cameras one device can serve at one decision per second per camera, computed as $\lfloor 1000 / t_{95} \rfloor$ where $t_{95}$ is the 95th-percentile end-to-end latency in milliseconds, for sequential processing. We do not batch requests from different cameras; batching can raise throughput at the cost of latency, and we leave it to future work.
+\end{itemize}
+
+\textit{Measuring memory.} Peak memory is harder to measure than it looks, and in our pilot two common metrics disagreed by more than a factor of three. Resident set size (RSS) counts pages of the memory-mapped weight file once they are touched. The operating system can evict these pages and reload them from disk, so RSS can overstate the memory a process truly needs. On Apple Silicon the ``physical footprint'' metric excludes those file-backed pages but also excludes GPU buffers that wrap them. For the 3\,B model on the Metal backend it reported \PilotLargeGpuFootprintGiB\,GiB, less than half the size of the weights on disk. On the CPU backend llama.cpp repacks quantized weights into a CPU-friendly layout and keeps the original mapping, which roughly doubles RSS (\PilotLargeCpuRssGiB\,GiB for the 3\,B model with 3.5\,GiB of weights). Table~\ref{tab:memory} separates these effects on the pilot machine. Disabling memory mapping (\texttt{--no-mmap}) copies the weights into private memory, after which RSS and footprint agree to within 0.06\,GiB in every configuration we tried: \AblLargeGpuNoMmapRssGiB\ and \AblLargeGpuNoMmapFpGiB\,GiB for the 3\,B model on the GPU. Disabling repacking (\texttt{--no-repack}) removes the second copy on the CPU and cuts the 3\,B model's RSS from \AblLargeCpuDefaultRssGiB\ to \AblLargeCpuNoRepackRssGiB\,GiB, at the price of slower CPU inference. None of the flags changed a single answer. We also tried a system-level measure, the rise in total-minus-available memory over an idle baseline, but on macOS it was not reproducible: with memory compression and background processes it sometimes reported less than the process's own private memory. We therefore run all efficiency measurements with \texttt{--no-mmap} and report peak RSS, which then equals the memory the model actually occupies; on the Jetson we additionally report total used RAM from \texttt{tegrastats}, since CPU and GPU share memory there. Repacking stays enabled, as it would in a deployment, and its memory cost is visible in the CPU numbers.
+
+\begin{table*}[t]
+\centering
+\caption{Memory accounting on the pilot machine (\PilotCpu, \PilotRamGB\,GB, macOS), Q8\_0, prompt~\promptA, 30 requests per row. ``Same answers'' compares with the default flags. Latencies are relative only: other applications were running.}
+\label{tab:memory}
+\footnotesize
+\setlength{\tabcolsep}{5pt}
+\input{generated/memory_ablation.tex}
+\end{table*}
+
+\textit{Measuring power.} On the Jetson we sample total board power with \texttt{tegrastats} at 100\,ms intervals and report mean power during inference and energy per decision. \pending{CPU device: external USB/wall power meter, model and sampling rate}.
+
+\subsection{Hardware and software}
+Table~\ref{tab:hardware} lists the devices. The full grid runs on the Jetson Orin Nano; the CPU-only device runs only the configurations that are Pareto-optimal on the Jetson. Accuracy runs that do not depend on the device run on a cloud GPU; because decoding is greedy and deterministic, a configuration gives the same answers on every backend we tested (Section~\ref{sec:pilot}), so accuracy measured once applies to all devices.
+
+\begin{table}[t]
+\centering
+\caption{Hardware and software. Jetson specifications are for the Orin Nano Super Developer Kit \cite{nvidia_orin_nano_super}. \pending{software rows; CPU-only device}}
+\label{tab:hardware}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lll}
+\toprule
+ & Jetson Orin Nano & CPU-only device \\
+\midrule
+CPU & 6$\times$ Cortex-A78AE, 1.7\,GHz & \pending{} \\
+GPU & Ampere, 1024 CUDA cores & none (CPU only) \\
+Memory & 8\,GB LPDDR5, 102\,GB/s & \pending{} \\
+OS / JetPack & \pending{} & \pending{} \\
+Power mode & \pending{nvpmodel} & \pending{} \\
+Threads & \pending{} & \pending{} \\
+llama.cpp build & \pending{} & \pending{} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Measurement procedure}
+\label{sec:procedure}
+Each configuration runs in a fresh server process. We discard three warm-up requests and then time at least 50 requests, reporting the median and the 95th percentile. Prompt caching is disabled, so every request processes its image and prompt from scratch, as a new camera frame would. Requests are sent one at a time from the same machine. The device runs nothing else, is connected to mains power, and is kept from sleeping. We added the last condition after a pilot run in which macOS put the machine into idle sleep in the middle of a request; that request was logged as taking 1015\,s instead of about 5\,s. We record the operating system, runtime build, thread count, power mode and 1-minute load average with every run.

@@ -1,0 +1,641 @@
+% references.bib -- verified bibliography for
+% "How Small Can You Go? Accuracy-Efficiency Trade-offs of Edge Vision-Language
+%  Models for Person-Down Detection in Industrial Settings"
+%
+% Every entry was checked against an authoritative source (Crossref/DataCite DOI
+% metadata, arXiv API/abstract page, publisher proceedings page, official
+% GitHub/Hugging Face/vendor page) on 2026-10-26. See references_notes.md for the
+% verification URL of each key.
+
+% =====================================================================
+% A. Datasets
+% =====================================================================
+
+@article{kwolek2014urfall,
+  author  = {Kwolek, Bogdan and Kepski, Michal},
+  title   = {Human fall detection on embedded platform using depth maps and wireless accelerometer},
+  journal = {Computer Methods and Programs in Biomedicine},
+  volume  = {117},
+  number  = {3},
+  pages   = {489--501},
+  year    = {2014},
+  doi     = {10.1016/j.cmpb.2014.09.005}
+}
+
+@article{martinez2019upfall,
+  author  = {Mart{\'\i}nez-Villase{\~n}or, Lourdes and Ponce, Hiram and Brieva, Jorge and Moya-Albor, Ernesto and N{\'u}{\~n}ez-Mart{\'\i}nez, Jos{\'e} and Pe{\~n}afort-Asturiano, Carlos},
+  title   = {{UP-Fall} Detection Dataset: A Multimodal Approach},
+  journal = {Sensors},
+  volume  = {19},
+  number  = {9},
+  pages   = {1988},
+  year    = {2019},
+  doi     = {10.3390/s19091988}
+}
+
+@techreport{auvinet2010mcfd,
+  author      = {Auvinet, Edouard and Rougier, Caroline and Meunier, Jean and St-Arnaud, Alain and Rousseau, Jacqueline},
+  title       = {Multiple cameras fall dataset},
+  institution = {DIRO -- Universit{\'e} de Montr{\'e}al},
+  type        = {Technical Report},
+  number      = {1350},
+  month       = jul,
+  year        = {2010},
+  url         = {http://www.iro.umontreal.ca/~labimage/Dataset/}
+}
+
+@article{charfi2013le2i,
+  author  = {Charfi, Imen and Miteran, Johel and Dubois, Julien and Atri, Mohamed and Tourki, Rached},
+  title   = {Optimized spatio-temporal descriptors for real-time fall detection: comparison of support vector machine and {Adaboost}-based classification},
+  journal = {Journal of Electronic Imaging},
+  volume  = {22},
+  number  = {4},
+  pages   = {041106},
+  year    = {2013},
+  doi     = {10.1117/1.JEI.22.4.041106}
+}
+
+@misc{dubois2014le2idata,
+  author       = {Dubois, Julien and Miteran, Johel},
+  title        = {Fall Detection Dataset},
+  howpublished = {dat@UBFC -- Atelier de la donn{\'e}e de Bourgogne-Franche-Comt{\'e}},
+  year         = {2014},
+  doi          = {10.25666/DATAUBFC-2024-04-09},
+  url          = {https://search-data.ubfc.fr/FR-13002091000019-2024-04-09_Fall-Detection-Dataset.html},}
+
+@misc{schneider2025omnifall,
+  author        = {Schneider, David and Marinov, Zdravko and Mistol, Moritz and Zhong, Zeyun and Jaus, Alexander and D{\"u}ger, Rodi and others},
+  title         = {{OmniFall}: From Staged Through Synthetic to Wild, A Unified Multi-Domain Dataset for Robust Fall Detection},
+  year          = {2025},
+  eprint        = {2505.19889},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CV},
+  doi           = {10.48550/arXiv.2505.19889},
+  url           = {https://arxiv.org/abs/2505.19889},
+  note = {Dataset: https://huggingface.co/datasets/simplexsigil2/omnifall},}
+
+% =====================================================================
+% B. Fall-detection surveys / reviews
+% =====================================================================
+
+@article{mubashir2013survey,
+  author  = {Mubashir, Muhammad and Shao, Ling and Seed, Luke},
+  title   = {A survey on fall detection: Principles and approaches},
+  journal = {Neurocomputing},
+  volume  = {100},
+  pages   = {144--152},
+  year    = {2013},
+  doi     = {10.1016/j.neucom.2011.09.037}
+}
+
+@article{igual2013challenges,
+  author  = {Igual, Raul and Medrano, Carlos and Plaza, Inmaculada},
+  title   = {Challenges, issues and trends in fall detection systems},
+  journal = {BioMedical Engineering OnLine},
+  volume  = {12},
+  number  = {1},
+  pages   = {66},
+  year    = {2013},
+  doi     = {10.1186/1475-925X-12-66}
+}
+
+@article{gutierrez2021review,
+  author  = {Guti{\'e}rrez, Jes{\'u}s and Rodr{\'\i}guez, V{\'\i}ctor and Martin, Sergio},
+  title   = {Comprehensive Review of Vision-Based Fall Detection Systems},
+  journal = {Sensors},
+  volume  = {21},
+  number  = {3},
+  pages   = {947},
+  year    = {2021},
+  doi     = {10.3390/s21030947}
+}
+
+@article{alam2022review,
+  author  = {Alam, Ekram and Sufian, Abu and Dutta, Paramartha and Leo, Marco},
+  title   = {Vision-based human fall detection systems using deep learning: A review},
+  journal = {Computers in Biology and Medicine},
+  volume  = {146},
+  pages   = {105626},
+  year    = {2022},
+  doi     = {10.1016/j.compbiomed.2022.105626}
+}
+
+% =====================================================================
+% C. Pose estimation and pose-based fall detection
+% =====================================================================
+
+@article{cao2021openpose,
+  author  = {Cao, Zhe and Hidalgo, Gines and Simon, Tomas and Wei, Shih-En and Sheikh, Yaser},
+  title   = {{OpenPose}: Realtime Multi-Person {2D} Pose Estimation Using Part Affinity Fields},
+  journal = {IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  volume  = {43},
+  number  = {1},
+  pages   = {172--186},
+  year    = {2021},
+  doi     = {10.1109/TPAMI.2019.2929257}
+}
+
+@inproceedings{maji2022yolopose,
+  author    = {Maji, Debapriya and Nagori, Soyeb and Mathew, Manu and Poddar, Deepak},
+  title     = {{YOLO-Pose}: Enhancing {YOLO} for Multi Person Pose Estimation Using Object Keypoint Similarity Loss},
+  booktitle = {2022 IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops (CVPRW)},
+  pages     = {2636--2645},
+  year      = {2022},
+  doi       = {10.1109/CVPRW56347.2022.00297}
+}
+
+@misc{jocher2024yolo11,
+  author       = {Jocher, Glenn and Qiu, Jing},
+  title        = {Ultralytics {YOLO11}},
+  version      = {11.0.0},
+  year         = {2024},
+  howpublished = {Software, GitHub repository},
+  url          = {https://github.com/ultralytics/ultralytics},
+  note = {AGPL-3.0 license},}
+
+@misc{jocher2026yolo26,
+  author        = {Jocher, Glenn and Qiu, Jing and Liu, Mengyu and Lyu, Shuai and Akyon, Fatih Cagatay and Kalfaoglu, Muhammet Esat},
+  title         = {Ultralytics {YOLO26}: Unified Real-Time End-to-End Vision Models},
+  year          = {2026},
+  eprint        = {2606.03748},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CV},
+  doi           = {10.48550/arXiv.2606.03748},
+  url           = {https://arxiv.org/abs/2606.03748},}
+
+@article{chen2020openposefall,
+  author  = {Chen, Weiming and Jiang, Zijie and Guo, Hailin and Ni, Xiaoyang},
+  title   = {Fall Detection Based on Key Points of Human-Skeleton Using {OpenPose}},
+  journal = {Symmetry},
+  volume  = {12},
+  number  = {5},
+  pages   = {744},
+  year    = {2020},
+  doi     = {10.3390/sym12050744}
+}
+
+@article{ramirez2021skeleton,
+  author  = {Ramirez, Heilym and Velastin, Sergio A. and Meza, Ignacio and Fabregas, Ernesto and Makris, Dimitrios and Farias, Gonzalo},
+  title   = {Fall Detection and Activity Recognition Using Human Skeleton Features},
+  journal = {IEEE Access},
+  volume  = {9},
+  pages   = {33532--33542},
+  year    = {2021},
+  doi     = {10.1109/ACCESS.2021.3061626}
+}
+
+@misc{pereira2024industrialfall,
+  author        = {Pereira, Gracile Astlin},
+  title         = {Fall Detection for Industrial Setups Using {YOLOv8} Variants},
+  year          = {2024},
+  eprint        = {2408.04605},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CV},
+  doi           = {10.48550/arXiv.2408.04605},
+  url           = {https://arxiv.org/abs/2408.04605}
+}
+
+% =====================================================================
+% D. Vision-language models
+% =====================================================================
+
+@inproceedings{radford2021clip,
+  author    = {Radford, Alec and Kim, Jong Wook and Hallacy, Chris and Ramesh, Aditya and Goh, Gabriel and Agarwal, Sandhini and others},
+  title     = {Learning Transferable Visual Models From Natural Language Supervision},
+  booktitle = {Proceedings of the 38th International Conference on Machine Learning (ICML)},
+  series    = {Proceedings of Machine Learning Research},
+  volume    = {139},
+  pages     = {8748--8763},
+  publisher = {PMLR},
+  year      = {2021},
+  url       = {https://proceedings.mlr.press/v139/radford21a.html}
+}
+
+@inproceedings{liu2023llava,
+  author    = {Liu, Haotian and Li, Chunyuan and Wu, Qingyang and Lee, Yong Jae},
+  title     = {Visual Instruction Tuning},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  volume    = {36},
+  pages     = {34892--34916},
+  year      = {2023},
+  url       = {https://proceedings.neurips.cc/paper_files/paper/2023/hash/6dcf277ea32ce3288914faf369fe6de0-Abstract-Conference.html}
+}
+
+@inproceedings{li2023blip2,
+  author    = {Li, Junnan and Li, Dongxu and Savarese, Silvio and Hoi, Steven},
+  title     = {{BLIP-2}: Bootstrapping Language-Image Pre-training with Frozen Image Encoders and Large Language Models},
+  booktitle = {Proceedings of the 40th International Conference on Machine Learning (ICML)},
+  series    = {Proceedings of Machine Learning Research},
+  volume    = {202},
+  pages     = {19730--19742},
+  publisher = {PMLR},
+  year      = {2023},
+  url       = {https://proceedings.mlr.press/v202/li23q.html}
+}
+
+@misc{tschannen2025siglip2,
+  author        = {Tschannen, Michael and Gritsenko, Alexey and Wang, Xiao and Naeem, Muhammad Ferjad and Alabdulmohsin, Ibrahim and Parthasarathy, Nikhil and others},
+  title         = {{SigLIP} 2: Multilingual Vision-Language Encoders with Improved Semantic Understanding, Localization, and Dense Features},
+  year          = {2025},
+  eprint        = {2502.14786},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CV},
+  doi           = {10.48550/arXiv.2502.14786},
+  url           = {https://arxiv.org/abs/2502.14786}
+}
+
+@misc{beyer2024paligemma,
+  author        = {Beyer, Lucas and Steiner, Andreas and Pinto, Andr{\'e} Susano and Kolesnikov, Alexander and Wang, Xiao and Salz, Daniel and others},
+  title         = {{PaliGemma}: A versatile {3B} {VLM} for transfer},
+  year          = {2024},
+  eprint        = {2407.07726},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CV},
+  doi           = {10.48550/arXiv.2407.07726},
+  url           = {https://arxiv.org/abs/2407.07726}
+}
+
+@misc{marafioti2025smolvlm,
+  author        = {Marafioti, Andr{\'e}s and Zohar, Orr and Farr{\'e}, Miquel and Noyan, Merve and Bakouch, Elie and Cuenca, Pedro and others},
+  title         = {{SmolVLM}: Redefining small and efficient multimodal models},
+  year          = {2025},
+  eprint        = {2504.05299},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.AI},
+  doi           = {10.48550/arXiv.2504.05299},
+  url           = {https://arxiv.org/abs/2504.05299}
+}
+
+@misc{chu2023mobilevlm,
+  author        = {Chu, Xiangxiang and Qiao, Limeng and Lin, Xinyang and Xu, Shuang and Yang, Yang and Hu, Yiming and others},
+  title         = {{MobileVLM}: A Fast, Strong and Open Vision Language Assistant for Mobile Devices},
+  year          = {2023},
+  eprint        = {2312.16886},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CV},
+  doi           = {10.48550/arXiv.2312.16886},
+  url           = {https://arxiv.org/abs/2312.16886}
+}
+
+@misc{bai2025qwen25vl,
+  author        = {Bai, Shuai and Chen, Keqin and Liu, Xuejing and Wang, Jialin and Ge, Wenbin and Song, Sibo and others},
+  title         = {{Qwen2.5-VL} Technical Report},
+  year          = {2025},
+  eprint        = {2502.13923},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CV},
+  doi           = {10.48550/arXiv.2502.13923},
+  url           = {https://arxiv.org/abs/2502.13923}
+}
+
+@misc{qwen2026qwen35,
+  author       = {{Qwen Team}},
+  title        = {{Qwen3.5}: Towards Native Multimodal Agents},
+  month        = feb,
+  year         = {2026},
+  howpublished = {Blog post},
+  url          = {https://qwen.ai/blog?id=qwen3.5},
+  note = {Blog post, February 2026},}
+
+@misc{amini2025lfm2,
+  author        = {Amini, Alexander and Banaszak, Anna and Benoit, Harold and B{\"o}{\"o}k, Arthur and Dakhran, Tarek and Duong, Song and others},
+  title         = {{LFM2} Technical Report},
+  year          = {2025},
+  eprint        = {2511.23404},
+  archivePrefix = {arXiv},
+  doi           = {10.48550/arXiv.2511.23404},
+  url           = {https://arxiv.org/abs/2511.23404},}
+
+@misc{liquidai2025lfm2vl,
+  author       = {{Liquid AI}},
+  title        = {{LFM2-VL}: Efficient Vision-Language Models},
+  month        = aug,
+  year         = {2025},
+  howpublished = {Liquid AI Blog},
+  url          = {https://www.liquid.ai/blog/lfm2-vl-efficient-vision-language-models},}
+
+@misc{liquidai2026lfm25,
+  author       = {{Liquid AI}},
+  title        = {Introducing {LFM2.5}: The Next Generation of On-Device {AI}},
+  month        = jan,
+  year         = {2026},
+  howpublished = {Liquid AI Blog},
+  url          = {https://www.liquid.ai/blog/introducing-lfm2-5-the-next-generation-of-on-device-ai},}
+
+@misc{liquidai2026lfm25vl450m,
+  author       = {{Liquid AI}},
+  title        = {{LFM2.5-VL-450M}: Structured Visual Intelligence, Edge to Cloud},
+  month        = apr,
+  year         = {2026},
+  howpublished = {Liquid AI Blog},
+  url          = {https://www.liquid.ai/blog/lfm2-5-vl-450m},}
+
+@misc{liquidai2026lfm25vl3b,
+  author       = {{Liquid AI}},
+  title        = {{LFM2.5-VL-3B}: A Better and Faster Vision-Language Model for the Edge},
+  month        = aug,
+  year         = {2026},
+  howpublished = {Liquid AI Blog},
+  url          = {https://www.liquid.ai/blog/lfm2-5-vl-3b},}
+
+% =====================================================================
+% E. VLM hallucination, yes-bias and prompt sensitivity
+% =====================================================================
+
+@inproceedings{li2023pope,
+  author    = {Li, Yifan and Du, Yifan and Zhou, Kun and Wang, Jinpeng and Zhao, Wayne Xin and Wen, Ji-Rong},
+  title     = {Evaluating Object Hallucination in Large Vision-Language Models},
+  booktitle = {Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing (EMNLP)},
+  pages     = {292--305},
+  publisher = {Association for Computational Linguistics},
+  year      = {2023},
+  doi       = {10.18653/v1/2023.emnlp-main.20}
+}
+
+@inproceedings{guan2024hallusionbench,
+  author    = {Guan, Tianrui and Liu, Fuxiao and Wu, Xiyang and Xian, Ruiqi and Li, Zongxia and Liu, Xiaoyu and others},
+  title     = {{HallusionBench}: An Advanced Diagnostic Suite for Entangled Language Hallucination and Visual Illusion in Large Vision-Language Models},
+  booktitle = {2024 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  pages     = {14375--14385},
+  year      = {2024},
+  doi       = {10.1109/CVPR52733.2024.01363}
+}
+
+@inproceedings{zong2024permutations,
+  author    = {Zong, Yongshuo and Yu, Tingyang and Chavhan, Ruchika and Zhao, Bingchen and Hospedales, Timothy},
+  title     = {Fool Your (Vision and) Language Model with Embarrassingly Simple Permutations},
+  booktitle = {Proceedings of the 41st International Conference on Machine Learning (ICML)},
+  series    = {Proceedings of Machine Learning Research},
+  volume    = {235},
+  pages     = {62892--62913},
+  publisher = {PMLR},
+  year      = {2024},
+  url       = {https://proceedings.mlr.press/v235/zong24b.html}
+}
+
+@misc{chan2026yesbias,
+  author        = {Chan, Tsan Tsai and Suresh, Varsha and Saha, Anisha and Hahn, Michael and Demberg, Vera},
+  title         = {System-Mediated Attention Imbalances Make Vision-Language Models Say Yes},
+  year          = {2026},
+  eprint        = {2601.12430},
+  archivePrefix = {arXiv},
+  doi           = {10.48550/arXiv.2601.12430},
+  url           = {https://arxiv.org/abs/2601.12430},
+  note = {Accepted to Findings of ACL 2026},}
+
+% =====================================================================
+% F. VLMs / (M)LLMs for fall detection and workplace safety
+% =====================================================================
+
+@misc{junca2026thermal,
+  author        = {Junca, Marcos and Junca, Mauro},
+  title         = {Asking a Multimodal {LLM} Whether Someone Fell: Zero-Shot Screening of Low-Resolution Thermal Video in a Laboratory and an Occupied Home},
+  year          = {2026},
+  eprint        = {2610.29913},
+  archivePrefix = {arXiv},
+  doi           = {10.48550/arXiv.2610.29913},
+  url           = {https://arxiv.org/abs/2610.29913}
+}
+
+@inproceedings{shahabian2026vlmfall,
+  author    = {Shahabian Alashti, Mohamad Reza and Ghamati Ghamsari, Khashayar and Zaraki, Abolfazl and Zhang, Baobing and Holthaus, Patrick and Alingal-Meethal, Shadiya and others},
+  title     = {Vision--Language Model for Fall Detection in Socially Assistive Robotics: Zero-Shot Prompting and Few-Shot Calibration},
+  booktitle = {Social Robotics + Art: 18th International Conference, ICSR+Art 2026, London, UK},
+  series    = {Lecture Notes in Computer Science},
+  publisher = {Springer Nature},
+  year      = {2026},
+  note = {In press},
+  url       = {https://researchprofiles.herts.ac.uk/en/publications/visionlanguage-model-for-fall-detection-in-socially-assistive-rob/}
+}
+
+@misc{yao2026surveillance,
+  author        = {Yao, Shanle and Danesh Pazho, Armin and Rashvand, Narges and Tabkhi, Hamed},
+  title         = {Are Multimodal {LLMs} Ready for Surveillance? A Reality Check on Zero-Shot Anomaly Detection in the Wild},
+  year          = {2026},
+  eprint        = {2603.04727},
+  archivePrefix = {arXiv},
+  doi           = {10.48550/arXiv.2603.04727},
+  url           = {https://arxiv.org/abs/2603.04727}
+}
+
+@misc{adil2026svlm,
+  author        = {Adil, Muhammad and Ahmed, Mehmood and Aqib, Muhammad and Gonzalez, Vicente A. and Lee, Gaang and Mei, Qipei},
+  title         = {Integration of Object Detection and Small {VLMs} for Construction Safety Hazard Identification},
+  year          = {2026},
+  eprint        = {2604.05210},
+  archivePrefix = {arXiv},
+  doi           = {10.48550/arXiv.2604.05210},
+  url           = {https://arxiv.org/abs/2604.05210}
+}
+
+@article{chen2026constructionsite10k,
+  author  = {Chen, Xuezheng and Zou, Zhengbo},
+  title   = {Are large pre-trained vision language models effective construction safety inspectors},
+  journal = {Data-Centric Engineering},
+  volume  = {7},
+  pages   = {e11},
+  year    = {2026},
+  doi     = {10.1017/dce.2026.10044}
+}
+
+@misc{bui2026construction,
+  author        = {Bui, Hieu and Chodosh, Nathaniel E. and Tavakoli, Arash},
+  title         = {Can Vision-Language Models Understand Construction Workers? An Exploratory Study},
+  year          = {2026},
+  eprint        = {2601.10835},
+  archivePrefix = {arXiv},
+  doi           = {10.48550/arXiv.2601.10835},
+  url           = {https://arxiv.org/abs/2601.10835}
+}
+
+@misc{yarrabothula2026steelbench,
+  author        = {Yarrabothula, Suryanarayana Reddy and Chawla, Manisha and Sinha, Kunal and Gupta, Gagan Raj and Lekkala, Sashank and Dosapati, Ashirvadhan and others},
+  title         = {{SteelBench}: Evaluating Vision-Language Models in Real-World Industrial Environments},
+  year          = {2026},
+  eprint        = {2607.05264},
+  archivePrefix = {arXiv},
+  doi           = {10.48550/arXiv.2607.05264},
+  url           = {https://arxiv.org/abs/2607.05264}
+}
+
+@misc{chen2024clip2safety,
+  author        = {Chen, Zhiling and Chen, Hanning and Imani, Mohsen and Chen, Ruimin and Imani, Farhad},
+  title         = {Vision Language Model for Interpretable and Fine-grained Detection of Safety Compliance in Diverse Workplaces},
+  year          = {2024},
+  eprint        = {2408.07146},
+  archivePrefix = {arXiv},
+  doi           = {10.48550/arXiv.2408.07146},
+  url           = {https://arxiv.org/abs/2408.07146}
+}
+
+@misc{wu2025monitorvlm,
+  author        = {Wu, Jiang and Wu, Sichao and Ma, Yinsong and Yu, Guangyuan and Xu, Haoyuan and Zheng, Lifang and others},
+  title         = {{MonitorVLM}: A Vision Language Framework for Safety Violation Detection in Mining Operations},
+  year          = {2025},
+  eprint        = {2510.03666},
+  archivePrefix = {arXiv},
+  doi           = {10.48550/arXiv.2510.03666},
+  url           = {https://arxiv.org/abs/2510.03666}
+}
+
+@inproceedings{mithsara2025slmfall,
+  author    = {Mithsara, Malithi and Shahid, Abdur and Yang, Ning and Uddin, Jamil and Biswas, Rahul},
+  title     = {Development of a Fall Detection and Safety Communication System Using Small Language Models},
+  booktitle = {Proceedings of the 42nd International Symposium on Automation and Robotics in Construction (ISARC)},
+  publisher = {International Association for Automation and Robotics in Construction (IAARC)},
+  year      = {2025},
+  doi       = {10.22260/ISARC2025/0077},}
+
+% =====================================================================
+% G. Quantisation and on-device inference
+% =====================================================================
+
+@inproceedings{dettmers2022llmint8,
+  author    = {Dettmers, Tim and Lewis, Mike and Belkada, Younes and Zettlemoyer, Luke},
+  title     = {{GPT3.int8()}: 8-bit Matrix Multiplication for Transformers at Scale},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  volume    = {35},
+  pages     = {30318--30332},
+  year      = {2022},
+  url       = {https://proceedings.neurips.cc/paper_files/paper/2022/hash/c3ba4962c05c49636d4c6206a97e9c8a-Abstract-Conference.html},
+  note = {Also known as LLM.int8()},}
+
+@inproceedings{frantar2023gptq,
+  author    = {Frantar, Elias and Ashkboos, Saleh and Hoefler, Torsten and Alistarh, Dan},
+  title     = {{GPTQ}: Accurate Post-Training Quantization for Generative Pre-trained Transformers},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2023},
+  eprint    = {2210.17323},
+  archivePrefix = {arXiv},
+  url       = {https://arxiv.org/abs/2210.17323}
+}
+
+@inproceedings{lin2024awq,
+  author    = {Lin, Ji and Tang, Jiaming and Tang, Haotian and Yang, Shang and Chen, Wei-Ming and Wang, Wei-Chen and others},
+  title     = {{AWQ}: Activation-aware Weight Quantization for On-Device {LLM} Compression and Acceleration},
+  booktitle = {Proceedings of Machine Learning and Systems (MLSys)},
+  volume    = {6},
+  pages     = {87--100},
+  year      = {2024},
+  url       = {https://proceedings.mlsys.org/paper_files/paper/2024/hash/42a452cbafa9dd64e9ba4aa95cc1ef21-Abstract-Conference.html}
+}
+
+@misc{gerganov2023llamacpp,
+  author       = {Gerganov, Georgi and {llama.cpp contributors}},
+  title        = {llama.cpp: {LLM} inference in {C/C++}},
+  year         = {2023},
+  howpublished = {GitHub repository},
+  url          = {https://github.com/ggml-org/llama.cpp},
+  note = {Build b10090 (commit 7347430f4) used for the pilot study},}
+
+@inproceedings{laskaridis2024melt,
+  author    = {Laskaridis, Stefanos and Katevas, Kleomenis and Minto, Lorenzo and Haddadi, Hamed},
+  title     = {{MELTing} Point: Mobile Evaluation of Language Transformers},
+  booktitle = {Proceedings of the 30th Annual International Conference on Mobile Computing and Networking (MobiCom)},
+  pages     = {890--907},
+  publisher = {ACM},
+  year      = {2024},
+  doi       = {10.1145/3636534.3690668}
+}
+
+@misc{taherin2026hydra,
+  author        = {Taherin, Amir and Taghipour Anvari, Sana and Amante, Charles and Chen, Yixiao and Noroian, Ruben and Feric, Zlatan and others},
+  title         = {Hydra: Phase-Aware Workload Characterization of {LLM} Inference across Edge {SoC} Generations, Backends, and Quantization Levels},
+  year          = {2026},
+  eprint        = {2608.25053},
+  archivePrefix = {arXiv},
+  doi           = {10.48550/arXiv.2608.25053},
+  url           = {https://arxiv.org/abs/2608.25053},
+  note = {Accepted at IEEE IISWC 2026},}
+
+% =====================================================================
+% H. Benchmarking methodology
+% =====================================================================
+
+@inproceedings{reddi2020mlperf,
+  author    = {Reddi, Vijay Janapa and Cheng, Christine and Kanter, David and Mattson, Peter and Schmuelling, Guenther and Wu, Carole-Jean and others},
+  title     = {{MLPerf} Inference Benchmark},
+  booktitle = {2020 ACM/IEEE 47th Annual International Symposium on Computer Architecture (ISCA)},
+  pages     = {446--459},
+  year      = {2020},
+  doi       = {10.1109/ISCA45697.2020.00045}
+}
+
+@inproceedings{guo2017calibration,
+  author    = {Guo, Chuan and Pleiss, Geoff and Sun, Yu and Weinberger, Kilian Q.},
+  title     = {On Calibration of Modern Neural Networks},
+  booktitle = {Proceedings of the 34th International Conference on Machine Learning (ICML)},
+  series    = {Proceedings of Machine Learning Research},
+  volume    = {70},
+  pages     = {1321--1330},
+  publisher = {PMLR},
+  year      = {2017},
+  url       = {https://proceedings.mlr.press/v70/guo17a.html}
+}
+
+@book{efron1993bootstrap,
+  author    = {Efron, Bradley and Tibshirani, Robert J.},
+  title     = {An Introduction to the Bootstrap},
+  publisher = {Chapman \& Hall},
+  address   = {New York},
+  year      = {1993},
+  doi       = {10.1007/978-1-4899-4541-9}
+}
+
+% =====================================================================
+% I. Workplace fall statistics
+% =====================================================================
+
+@misc{bls2026cfoi,
+  author       = {{U.S. Bureau of Labor Statistics}},
+  title        = {National Census of Fatal Occupational Injuries in 2024},
+  howpublished = {News release USDL-26-0230},
+  month        = feb,
+  year         = {2026},
+  url          = {https://www.bls.gov/news.release/cfoi.nr0.htm},
+  note         = {Released 19 February 2026. Accessed 2026-10-26}
+}
+
+@misc{hse2026fatal,
+  author       = {{Health and Safety Executive}},
+  title        = {Work-related fatal injuries in {Great Britain}, 2025/26},
+  year         = {2026},
+  howpublished = {HSE statistics web page (RIDDOR; provisional figures)},
+  url          = {https://www.hse.gov.uk/statistics/fatals-overview.htm},
+  note         = {Page updated 2026-06-30. Accessed 2026-10-26}
+}
+
+% =====================================================================
+% J. Lone-worker / man-down alarms
+% =====================================================================
+
+@misc{hse2020loneworkers,
+  author       = {{Health and Safety Executive}},
+  title        = {Protecting lone workers: How to manage the risks of working alone},
+  howpublished = {Leaflet INDG73(rev4)},
+  publisher    = {HSE Books},
+  month        = mar,
+  year         = {2020},
+  isbn         = {978-0-7176-6729-1},
+  url          = {https://www.hse.gov.uk/pubns/indg73.pdf}
+}
+
+% =====================================================================
+% K. Hardware
+% =====================================================================
+
+@misc{nvidia_orin_nano_super,
+  author       = {{NVIDIA Corporation}},
+  title        = {Jetson Orin Nano Super Developer Kit},
+  howpublished = {Product page},
+  url          = {https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/nano-super-developer-kit/},
+  note         = {Accessed 2026-10-26}
+}
+
+@misc{nvidia_orin_nano_userguide,
+  author       = {{NVIDIA Corporation}},
+  title        = {Jetson Orin Nano Developer Kit User Guide},
+  howpublished = {Online documentation},
+  url          = {https://docs.nvidia.com/jetson/orin-nano-devkit/user-guide/latest/quick_start.html},
+  note         = {Accessed 2026-10-26}
+}

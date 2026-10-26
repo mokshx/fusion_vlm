@@ -1,0 +1,26 @@
+\section{Introduction}
+\label{sec:intro}
+
+\IEEEPARstart{F}{alls} are among the most common causes of death at work. In the United Kingdom, falls from height were the most common kind of fatal accident to workers in 2025/26, about a quarter of all worker deaths \cite{hse2026fatal}; in the United States, falls, slips and trips caused 844 of the 5,070 fatal work injuries recorded in 2024 \cite{bls2026cfoi}. In warehouses, plants and construction sites a fall is often followed by a period in which the injured worker cannot call for help, and the outcome depends on how quickly someone notices. Wearable ``man-down'' alarms, which UK guidance on lone working recommends in the form of devices that raise the alarm manually or automatically \cite{hse2020loneworkers}, address this for lone workers. They rely on the worker wearing and charging a device. Fixed cameras already cover many industrial floors, so detecting a person lying on the floor from video is an attractive complement.
+
+Two practical constraints shape such a system. First, it has to run near the cameras. Streaming every camera to a data centre costs bandwidth, adds latency and moves footage of employees off site, which many sites will not accept. The detector therefore has to fit on an edge device that costs a few hundred dollars and serves several cameras. Second, it has to distinguish a person who is down from the many postures that look similar in a single frame: a mechanic kneeling at a machine, a picker crouching at a low shelf, a worker sitting on the floor during a break, or someone lying under a vehicle to repair it. False alarms from these postures are what make such systems ignored in practice.
+
+Classic vision-based fall detectors learn a classifier from labelled fall videos \cite{mubashir2013survey,igual2013challenges}, or apply hand-written rules to body keypoints from a pose estimator \cite{cao2021openpose,maji2022yolopose}. Both work well on the datasets they were built for and need new labelled data or new rules when the scene, the camera angle or the set of confusing postures changes. Vision--language models (VLMs) offer a different route: the task is stated in words, and the model answers without task-specific training \cite{radford2021clip,liu2023llava}. Recent VLMs with fewer than one billion parameters can run on edge hardware \cite{marafioti2025smolvlm,amini2025lfm2}, and integer quantization reduces their memory further \cite{dettmers2022llmint8,frantar2023gptq,lin2024awq}. What is missing is evidence about where these models stop being good enough. How much accuracy is lost going from a 4\,B to a 450\,M model, from 16-bit to 4-bit weights, or from full resolution to 256 pixels? Does a short clip help more than a larger model? And how many camera streams can one edge device actually serve?
+
+This paper answers these questions for \pd{} detection. We treat it as a zero-shot study: no model is fine-tuned, so the results describe what a practitioner gets by downloading a model and writing a prompt. Our research questions are:
+\begin{itemize}
+  \item \textbf{RQ1} How do accuracy and false-alarm rate change with model size, quantization, input resolution and number of frames per decision?
+  \item \textbf{RQ2} What are the latency, peak memory and power costs of each configuration on real edge hardware?
+  \item \textbf{RQ3} Which configurations lie on the accuracy--latency and accuracy--memory Pareto frontiers?
+  \item \textbf{RQ4} Can VLMs tell a person who is down from hard negatives such as kneeling, crouching, sitting on the floor and lying on furniture?
+\end{itemize}
+
+Our contributions are:
+\begin{enumerate}
+  \item A \pd{} benchmark assembled from four public fall datasets \cite{kwolek2014urfall,martinez2019upfall,auvinet2010mcfd,charfi2013le2i}, with a written labelling policy, hard-negative subtypes, camera-viewpoint annotations and sequence-disjoint development and test splits. We release labels and build scripts; the frames stay with their original distributors.
+  \item A zero-shot evaluation of five open VLMs (450\,M--4\,B parameters) across quantization, resolution, temporal context and prompt wording, together with a keypoint-rule baseline that tests whether a VLM is needed at all.
+  \item Latency, memory and power measurements on an NVIDIA Jetson Orin Nano and a CPU-only device under a documented protocol, including two measurement pitfalls on unified-memory hardware that can distort reported memory use by more than a factor of three.
+  \item Accuracy--efficiency Pareto frontiers, a per-device ``camera streams at one decision per second'' table, and deployment recommendations for each device class.
+\end{enumerate}
+
+Section~\ref{sec:related} reviews related work. Section~\ref{sec:benchmark} describes the benchmark, Section~\ref{sec:methods} the models and baseline, and Section~\ref{sec:protocol} the evaluation protocol. Section~\ref{sec:results} reports results, Section~\ref{sec:discussion} discusses them together with the study's limitations, and Section~\ref{sec:conclusion} concludes.

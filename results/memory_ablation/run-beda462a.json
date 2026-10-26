@@ -1,0 +1,56 @@
+{
+  "run_id": "beda462a",
+  "model": "lfm-450m:Q8_0",
+  "args": {
+    "labels": "data/benchmark/step0/labels.csv",
+    "images_root": "data/benchmark/step0",
+    "models": "['lfm-450m:Q8_0']",
+    "prompts": "['A']",
+    "resolution": "None",
+    "ngl": "0",
+    "threads": "10",
+    "max_tokens": "16",
+    "warmup": "3",
+    "server_args": "--no-repack",
+    "out": "results/memory_ablation/lfm-450m-Q8_0_cpu_--no-repack.csv"
+  },
+  "env": {
+    "hostname": "chat.local",
+    "os": "macOS-26.5.2-arm64-arm-64bit",
+    "machine": "arm64",
+    "python": "3.12.9",
+    "cpu_count_logical": 14,
+    "cpu_count_physical": 14,
+    "ram_total_gb": 48.0,
+    "load_avg_1m": 9.69091796875,
+    "llama_cpp_version": "version: 10090 (7347430f4) | built with AppleClang 21.0.0.21000099 for Darwin arm64",
+    "cpu": "Apple M4 Pro",
+    "perf_cores": "10",
+    "eff_cores": "4",
+    "power_source": "battery",
+    "low_power_mode": false,
+    "torch": "2.14.1"
+  },
+  "backend": {
+    "backend": "llamacpp",
+    "model_file": "LFM2.5-VL-450M-Q8_0.gguf",
+    "mmproj_file": "mmproj-LFM2.5-VL-450m-F16.gguf",
+    "model_size_mb": 361.6515197753906,
+    "mmproj_size_mb": 180.36468505859375,
+    "n_gpu_layers": 0,
+    "mmproj_offload": false,
+    "threads": 10,
+    "ctx_size": 4096,
+    "image_max_tokens": null,
+    "load_s": 0.4201948750123847,
+    "extra_args": "--no-repack",
+    "server_cmd": "llama-server -m models/LFM2.5-VL-450M-GGUF/LFM2.5-VL-450M-Q8_0.gguf --mmproj models/LFM2.5-VL-450M-GGUF/mmproj-LFM2.5-VL-450m-F16.gguf --host 127.0.0.1 --port 54796 -ngl 0 -c 4096 -np 1 -cram 0 --no-webui --no-mmproj-offload -dev none -t 10 --no-repack"
+  },
+  "memory": {
+    "peak_rss_mb": 783.484375,
+    "peak_footprint_mb": 390.42320251464844,
+    "sys_mem_delta_mb": 849.640625,
+    "sys_mem_baseline_mb": 22966.65625
+  },
+  "wall_s": 39.526220083236694
+}

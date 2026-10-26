@@ -1,0 +1,69 @@
+% How Small Can You Go? -- first draft.
+% Build: cd paper && tectonic main.tex   (or latexmk -pdf main.tex)
+% Numbers in generated/ come from scripts/make_paper_tables.py; do not edit them by hand.
+%
+% Class: IEEEtran journal mode (arXiv version; ports to the IEEE Access template, which
+% is IEEEtran-based). For MDPI Sensors, move the text into the MDPI template; section
+% order already follows Introduction / Related Work / Materials and Methods / Results /
+% Discussion / Conclusions.
+\documentclass[journal]{IEEEtran}
+
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+\usepackage{cite}
+
+% ---- Draft markers ------------------------------------------------------------
+% \pending{...}: result or detail that depends on experiments not yet run.
+% \authornote{...}: something only the author can supply or decide.
+% Set \draftfalse before submission; then any remaining marker breaks the build.
+\newif\ifdraft \drafttrue
+\ifdraft
+  \newcommand{\pending}[1]{{\color{red!75!black}[\textbf{pending:} #1]}}
+  \newcommand{\authornote}[1]{{\color{blue!70!black}[\textbf{author:} #1]}}
+\else
+  \newcommand{\pending}[1]{\errmessage{Unresolved pending marker}}
+  \newcommand{\authornote}[1]{\errmessage{Unresolved author note}}
+\fi
+
+\input{generated/numbers.tex}
+
+\newcommand{\pd}{\textit{person-down}}
+\newcommand{\promptA}{\texttt{A}}
+\newcommand{\promptB}{\texttt{B}}
+\newcommand{\promptBtwo}{\texttt{B2}}
+
+\begin{document}
+
+\title{How Small Can You Go? Accuracy--Efficiency Trade-offs of Edge Vision--Language Models for Person-Down Detection in Industrial Settings}
+
+\author{Moksh~Chadha%
+\thanks{\authornote{Affiliation, e-mail and ORCID. Confirm affiliation policy before listing a company.}}}
+
+\markboth{Preprint -- first draft}{Chadha: Edge VLMs for Person-Down Detection}
+
+\maketitle
+
+\input{sections/abstract}
+\input{sections/introduction}
+\input{sections/related}
+\input{sections/benchmark}
+\input{sections/methods}
+\input{sections/protocol}
+\input{sections/results}
+\input{sections/discussion}
+\input{sections/conclusion}
+\input{sections/backmatter}
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\appendices
+\input{sections/appendix}
+
+\end{document}
