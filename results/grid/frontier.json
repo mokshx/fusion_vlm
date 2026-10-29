@@ -1,0 +1,67 @@
+[
+  {
+    "spec": "lfm-450m:Q8_0",
+    "resolution": "512",
+    "n_frames": 1
+  },
+  {
+    "spec": "lfm-450m:Q4_K_M",
+    "resolution": "native",
+    "n_frames": 1
+  },
+  {
+    "spec": "lfm-450m:Q4_K_M",
+    "resolution": "256",
+    "n_frames": 1
+  },
+  {
+    "spec": "lfm-1.6b:Q4_K_M",
+    "resolution": "256",
+    "n_frames": 1
+  },
+  {
+    "spec": "lfm-3b:F16",
+    "resolution": "native",
+    "n_frames": 1
+  },
+  {
+    "spec": "lfm-3b:F16",
+    "resolution": "512",
+    "n_frames": 1
+  },
+  {
+    "spec": "lfm-3b:Q8_0",
+    "resolution": "512",
+    "n_frames": 1
+  },
+  {
+    "spec": "qwen3.5-2b:BF16",
+    "resolution": "512",
+    "n_frames": 1
+  },
+  {
+    "spec": "qwen3.5-2b:Q4_K_M",
+    "resolution": "512",
+    "n_frames": 1
+  },
+  {
+    "spec": "lfm-1.6b:Q4_K_M",
+    "resolution": "native",
+    "n_frames": 1
+  },
+  {
+    "spec": "lfm-3b:Q8_0",
+    "resolution": "native",
+    "n_frames": 1
+  },
+  {
+    "spec": "lfm-3b:Q4_K_M",
+    "resolution": "native",
+    "n_frames": 1
+  },
+  {
+    "spec": "qwen3.5-2b:Q4_K_M",
+    "resolution": "native",
+    "n_frames": 1
+  }
+]

@@ -1,0 +1,21 @@
+\begin{tabular}{lllrrrrrr}
+\toprule
+ & & & \multicolumn{3}{c}{Integrated GPU} & \multicolumn{3}{c}{CPU only (10 threads)} \\
+\cmidrule(lr){4-6}\cmidrule(lr){7-9}
+Model & Weights & Res. & p95 (ms) & RSS (GiB) & Streams & p95 (ms) & RSS (GiB) & Streams \\
+\midrule
+LFM2.5-VL-450M & Q8\_0 & 512 & 92 & 0.85 & 10 & 817 & 0.86 & 1 \\
+LFM2.5-VL-450M & Q4\_K\_M & native & 130 & 0.68 & 7 & 1364 & 0.71 & 0 \\
+LFM2.5-VL-450M & Q4\_K\_M & 256 & 57 & 0.66 & 17 & 355 & 0.66 & 2 \\
+LFM2.5-VL-1.6B & Q4\_K\_M & native & 444 & 1.89 & 2 & 5476 & 1.92 & 0 \\
+LFM2.5-VL-1.6B & Q4\_K\_M & 256 & 169 & 1.87 & 5 & 1358 & 1.85 & 0 \\
+LFM2.5-VL-3B & F16 & native & 672 & 7.07 & 1 & 7258 & 6.29 & 0 \\
+LFM2.5-VL-3B & F16 & 512 & 539 & 7.06 & 1 & 5695 & 6.24 & 0 \\
+LFM2.5-VL-3B & Q8\_0 & native & 679 & 4.25 & 1 & 5526 & 4.31 & 0 \\
+LFM2.5-VL-3B & Q8\_0 & 512 & 518 & 4.24 & 1 & 4096 & 4.27 & 0 \\
+LFM2.5-VL-3B & Q4\_K\_M & native & 675 & 3.02 & 1 & 6945 & 3.07 & 0 \\
+Qwen3.5-2B & BF16 & 512 & 417 & 6.35 & 2 & 7185 & 4.55 & 0 \\
+Qwen3.5-2B & Q4\_K\_M & native & 655 & 2.93 & 1 & 7520 & 3.03 & 0 \\
+Qwen3.5-2B & Q4\_K\_M & 512 & 361 & 2.91 & 2 & 3810 & 2.95 & 0 \\
+\bottomrule
+\end{tabular}

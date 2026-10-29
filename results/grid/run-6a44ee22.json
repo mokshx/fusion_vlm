@@ -1,0 +1,57 @@
+{
+  "run_id": "6a44ee22",
+  "model": "lfm-3b:F16",
+  "args": {
+    "labels": "[PosixPath('data/benchmark/v1/labels_test.csv'), PosixPath('data/benchmark/v1/labels_dev.csv')]",
+    "images_root": ".",
+    "models": "['lfm-3b:F16']",
+    "prompts": "['A']",
+    "resolution": "512",
+    "n_frames": "1",
+    "ngl": "99",
+    "threads": "None",
+    "max_tokens": "16",
+    "warmup": "3",
+    "server_args": "--no-mmap",
+    "out": "results/grid/stage2.csv"
+  },
+  "env": {
+    "hostname": "chat.local",
+    "os": "macOS-26.5.2-arm64-arm-64bit",
+    "machine": "arm64",
+    "python": "3.12.9",
+    "cpu_count_logical": 14,
+    "cpu_count_physical": 14,
+    "ram_total_gb": 48.0,
+    "load_avg_1m": 0.66259765625,
+    "llama_cpp_version": "version: 10090 (7347430f4) | built with AppleClang 21.0.0.21000099 for Darwin arm64",
+    "cpu": "Apple M4 Pro",
+    "perf_cores": "10",
+    "eff_cores": "4",
+    "power_source": "AC",
+    "low_power_mode": false,
+    "torch": "2.14.1"
+  },
+  "backend": {
+    "backend": "llamacpp",
+    "model_file": "LFM2.5-VL-3B-F16.gguf",
+    "mmproj_file": "mmproj-LFM2.5-VL-3B-F16.gguf",
+    "model_size_mb": 5152.853546142578,
+    "mmproj_size_mb": 814.4320983886719,
+    "n_gpu_layers": 99,
+    "mmproj_offload": true,
+    "threads": null,
+    "ctx_size": 4096,
+    "image_max_tokens": null,
+    "load_s": 1.4605531249835622,
+    "extra_args": "--no-mmap",
+    "server_cmd": "llama-server -m models/LFM2.5-VL-3B-GGUF/LFM2.5-VL-3B-F16.gguf --mmproj models/LFM2.5-VL-3B-GGUF/mmproj-LFM2.5-VL-3B-F16.gguf --host 127.0.0.1 --port 63086 -ngl 99 -c 4096 -np 1 -cram 0 --no-webui --mmproj-offload --no-mmap"
+  },
+  "memory": {
+    "peak_rss_mb": 7226.109375,
+    "peak_footprint_mb": 7259.834053039551,
+    "sys_mem_delta_mb": 7717.125,
+    "sys_mem_baseline_mb": 21658.890625
+  },
+  "wall_s": 361.89477705955505
+}

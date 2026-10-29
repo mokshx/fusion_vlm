@@ -173,6 +173,58 @@ def memory_ablation(nums: dict) -> str | None:
     return "\n".join(lines) + "\n"
 
 
+def benchmark_tables(nums: dict) -> None:
+    """Benchmark composition table and review statistics (data/benchmark/v1)."""
+    bench = ROOT / "data/benchmark/v1"
+    if not bench.exists():
+        return
+    test, dev = (pd.read_csv(bench / f"labels_{s}.csv") for s in ("test", "dev"))
+    cand = pd.read_csv(ROOT / "data/interim/bench/candidates.csv")
+    rev = pd.read_csv(ROOT / "data/interim/bench/review.csv")
+    m = cand.merge(rev, on="cand_id")
+    kept = m[m.label != "reject"]
+    nums.update({
+        "BenchNCand": str(len(cand)), "BenchNRejected": str(int((m.label == "reject").sum())),
+        "BenchNKept": str(len(kept)),
+        "BenchNRelabelled": str(int((kept.label != kept.proposed_label).sum())),
+        "BenchNTest": str(len(test)), "BenchNDev": str(len(dev)),
+        "BenchNSeqTest": str(test.sequence.nunique()), "BenchNSeqDev": str(dev.sequence.nunique()),
+        "BenchNMcfScen": str(pd.concat([test, dev]).query("dataset == 'mcf'").sequence.nunique()),
+        "BenchNUrSeq": str(pd.concat([test, dev]).query("dataset == 'urfall'").sequence.nunique()),
+    })
+    for split, d in [("Test", test), ("Dev", dev)]:
+        for lab, key in [("person_down", "Down"), ("hard_negative", "Hard"), ("normal", "Normal")]:
+            nums[f"Bench{split}{key}"] = str(int((d.label == lab).sum()))
+    names = {"fall": "fall", "lying_floor_deliberate": "lying on floor, deliberate",
+             "crouching": "crouching", "kneeling": "kneeling (incl.\\ hands and knees)",
+             "bending": "bending", "sitting_chair": "sitting on a chair",
+             "sitting_furniture": "sitting on a sofa or bed", "sitting_floor": "sitting on the floor",
+             "lying_furniture": "lying on a sofa or bed", "standing": "standing", "walking": "walking",
+             "unspecified": "changed in by-eye check"}
+    lab_names = {"person_down": "person down", "hard_negative": "hard negative", "normal": "normal"}
+    lines = [r"\begin{tabular}{llrrrr}", r"\toprule",
+             r"Label & Subtype & UR Fall & MCF & Test & Dev \\", r"\midrule"]
+    both = pd.concat([test, dev])
+    for lab in ["person_down", "hard_negative", "normal"]:
+        sub = both[both.label == lab]
+        first = True
+        for st, g in sub.groupby("subtype", sort=False):
+            pass
+        order = [s for s in names if s in set(sub.subtype)]
+        for st in order:
+            g = sub[sub.subtype == st]
+            lines.append(f"{lab_names[lab] if first else ''} & {names[st]} & {int((g.dataset == 'urfall').sum())} & "
+                         f"{int((g.dataset == 'mcf').sum())} & {int((g.split == 'test').sum())} & "
+                         f"{int((g.split == 'dev').sum())} \\\\")
+            first = False
+        lines.append(r"\midrule")
+    lines[-1] = r"\midrule"
+    lines.append(f"Total & & {int((both.dataset == 'urfall').sum())} & {int((both.dataset == 'mcf').sum())} & "
+                 f"{len(test)} & {len(dev)} \\\\")
+    lines += [r"\bottomrule", r"\end{tabular}"]
+    (OUT / "bench_composition.tex").write_text("\n".join(lines) + "\n")
+
+
 def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     cpu_csvs = [RES / "run2/mac_m4pro_cpu.csv", RES / "run4/qwen_cpu.csv"]
@@ -228,6 +280,7 @@ def main() -> None:
     nums["PilotLlamaBuild"] = env["llama_cpp_version"].split()[1]
     nums["PilotOs"] = env["os"].split("-")[1]
 
+    benchmark_tables(nums)
     abl = memory_ablation(nums)
     if abl:
         (OUT / "memory_ablation.tex").write_text(abl)

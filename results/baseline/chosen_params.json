@@ -1,0 +1,44 @@
+{
+  "yolo11n-pose-rule:1f": {
+    "theta": 60,
+    "ratio": 0.8,
+    "q": 1.0,
+    "dev_recall": 0.3968253968253968,
+    "dev_f1": 0.43478260869565216
+  },
+  "yolo11n-pose-rule:4f": {
+    "theta": 60,
+    "ratio": 1.0,
+    "q": 0.25,
+    "dev_recall": 0.5555555555555556,
+    "dev_f1": 0.5343511450381679
+  },
+  "yolo11n-pose-rule:8f": {
+    "theta": 60,
+    "ratio": 0.8,
+    "q": 0.25,
+    "dev_recall": 0.5396825396825397,
+    "dev_f1": 0.515151515151515
+  },
+  "yolo11s-pose-rule:1f": {
+    "theta": 50,
+    "ratio": 0.6,
+    "q": 1.0,
+    "dev_recall": 0.4126984126984127,
+    "dev_f1": 0.4369747899159664
+  },
+  "yolo11s-pose-rule:4f": {
+    "theta": 55,
+    "ratio": 0.8,
+    "q": 0.25,
+    "dev_recall": 0.6031746031746031,
+    "dev_f1": 0.5588235294117647
+  },
+  "yolo11s-pose-rule:8f": {
+    "theta": 60,
+    "ratio": 0.8,
+    "q": 0.25,
+    "dev_recall": 0.5396825396825397,
+    "dev_f1": 0.515151515151515
+  }
+}

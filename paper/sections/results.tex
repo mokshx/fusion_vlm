@@ -3,7 +3,7 @@
 
 \subsection{Pilot study}
 \label{sec:pilot}
-Before running the full grid we tested the pipeline on 30 frames from UR Fall: 10 \pd{} (five from the side camera, five from the ceiling camera), 10 hard negatives (crouching, kneeling, bending, sitting on a chair or bed, lying on a bed or sofa) and 10 normal frames, one frame per sequence and every frame checked by eye. We ran LFM2.5-VL-450M, LFM2.5-VL-3B and Qwen3.5-2B at Q8\_0 with all three prompts. The pilot is too small for conclusions about the models: the 3\,B model's hard-negative false-alarm rate with prompt~\promptA{}, 2/10, has a 95\% bootstrap interval of \PilotLargeAFaHardCI, and a perfect 10/10 recall has a 95\% Wilson interval of \PilotRecallWilsonCI. We report it because it shaped the protocol and the prompt set.
+Before the full grid, we tested the pipeline on 30 UR Fall frames: 10 \pd{} (five side-camera, five ceiling-camera), 10 hard negatives (crouching, kneeling, bending, sitting on a chair or bed, lying on a bed or sofa) and 10 normal, one frame per sequence, each reviewed visually. We ran LFM2.5-VL-450M, LFM2.5-VL-3B and Qwen3.5-2B at Q8\_0 with all three prompts. The pilot is too small to support conclusions about the models: the 3\,B model's hard-negative false-alarm rate with prompt~\promptA{}, 2/10, has a 95\% bootstrap interval of \PilotLargeAFaHardCI, and a perfect 10/10 recall has a 95\% Wilson interval of \PilotRecallWilsonCI. We report it because it shaped the protocol and the prompt set.
 
 \begin{table}[t]
 \centering
@@ -14,82 +14,151 @@ Before running the full grid we tested the pipeline on 30 frames from UR Fall: 1
 \input{generated/pilot_accuracy.tex}
 \end{table}
 
-Four observations carried over into the design. First, output format was not a problem: all \PilotNAnswers{} answers across models, prompts and backends began with ``yes'' or ``no'' (\PilotNLenient{} needed lenient parsing, \PilotNUnparsed{} were unparsed), so we did not need constrained decoding. Second, prompt wording changed the false-alarm rate more than model size did (Table~\ref{tab:pilot}). The detailed definition in prompt~\promptB{} raised the 3\,B model's hard-negative false alarms from \PilotLargeAFaHard{} to \PilotLargeBFaHard{} and made the 450\,M model answer ``yes'' to \PilotSmallBFaNormal{} frames of people simply standing or walking. Listing the excluded postures seems to prime the model toward them. This led us to add prompt~\promptBtwo{}, which defines \pd{} by one physical criterion and names no excluded posture. The effect of \promptBtwo{} depended on the model. It removed every hard-negative false alarm for Qwen3.5-2B (\PilotQwenBtwoFaHard{}, against \PilotQwenAFaHard{} with \promptA), brought the 3\,B LFM model back to \PilotLargeBtwoFaHard{}, and did not help the 450\,M model (\PilotSmallBtwoFaNormal{} normal frames flagged), whose $p_\text{yes}$ on standing people stayed just above 0.5. No single prompt was best for all three models. Third, with prompt~\promptA{} all three models ranked every \pd{} frame above every negative (AUROC \PilotLargeAAuroc{}), so their errors came from where the default answer places the threshold rather than from an inability to separate the classes. This is why we report a calibrated operating point. Fourth, answers were identical across backends: \PilotCpuGpuAgree{} answers matched between CPU and Metal, and \PilotQeightBfAgree{} between Q8\_0 GGUF and bf16 Transformers for the 450\,M model, the one difference being a frame with $p_\text{yes}$ close to 0.5.
+Four observations carried into the design. First, output format was a non-issue: all \PilotNAnswers{} answers across models, prompts and backends began with ``yes'' or ``no'' (\PilotNLenient{} needed lenient parsing, \PilotNUnparsed{} were unparsed), so constrained decoding was unnecessary. Second, prompt wording moved the false-alarm rate more than model size did (Table~\ref{tab:pilot}). The detailed definition in prompt~\promptB{} raised the 3\,B model's hard-negative false alarms from \PilotLargeAFaHard{} to \PilotLargeBFaHard{} and made the 450\,M model answer ``yes'' to \PilotSmallBFaNormal{} frames of people merely standing or walking; listing the excluded postures appears to prime the model toward them. This prompted \promptBtwo{}, which defines \pd{} by one physical criterion and names no excluded posture. Its effect depended on the model: it eliminated every hard-negative false alarm for Qwen3.5-2B (\PilotQwenBtwoFaHard{}, against \PilotQwenAFaHard{} with \promptA), restored the 3\,B LFM model to \PilotLargeBtwoFaHard{}, and did not help the 450\,M model (\PilotSmallBtwoFaNormal{} normal frames flagged), whose $p_\text{yes}$ on standing people stayed just above 0.5. No prompt was best for all three. Third, with prompt~\promptA{} all three models ranked every \pd{} frame above every negative (AUROC \PilotLargeAAuroc{}), so their errors stemmed from the placement of the default threshold, not from any inability to separate the classes; hence the calibrated operating point. Fourth, answers were identical across backends: \PilotCpuGpuAgree{} matched between CPU and Metal, and \PilotQeightBfAgree{} between Q8\_0 GGUF and bf16 Transformers for the 450\,M model, the lone discrepancy being a frame with $p_\text{yes}$ near 0.5.
 
-The labelling check also mattered. UR Fall's depth-based annotation marks a frame as ``lying on the ground'' from the person's height above the floor. Viewing the candidates showed that the ``lying'' frames in its activity-of-daily-living sequences mix lying on a bed or sofa with deliberate lying on the floor. Under our policy the first are hard negatives and the second are \pd{}. All three models flagged all nine deliberate floor-lying frames under every prompt (\PilotFloorHits{} answers). These frames were filmed in rooms other than the one where all UR Fall falls take place, and with prompt~\promptA{} the same models rejected the standing people filmed in those rooms (\PilotSameRoomNormalRejectA{} answers), which is early evidence that the models respond to posture rather than recognising the fall room.
+The labelling check proved instructive. UR Fall's depth-based annotation marks ``lying on the ground'' from the person's height above the floor, so the ``lying'' frames in its daily-living sequences conflate lying on a bed or sofa with deliberate lying on the floor. Under our policy the former are hard negatives, the latter \pd{}. All three models flagged all nine deliberate floor-lying frames under every prompt (\PilotFloorHits{} answers). Those frames were filmed in rooms other than the one where every UR Fall fall occurs, and with prompt~\promptA{} the same models rejected the standing people filmed there (\PilotSameRoomNormalRejectA{} answers), early evidence that the models respond to posture, not merely to the fall room.
 
-On an \PilotCpu{} laptop, used here only to validate the measurement pipeline, a decision took a median of \PilotSmallCpuMedianMs\,ms (LFM 450\,M), \PilotLargeCpuMedianMs\,ms (LFM 3\,B) and \PilotQwenCpuMedianMs\,ms (Qwen 2\,B) on 10 CPU threads, and \PilotSmallGpuMedianMs, \PilotLargeGpuMedianMs{} and \PilotQwenGpuMedianMs\,ms on the integrated GPU (Table~\ref{tab:pilot_eff}). Qwen3.5-2B encodes the same frame into more tokens than the LFM models, which offsets its smaller language model. On the CPU, prefill (vision encoding and prompt processing) accounted for \PilotSmallCpuPrefillPct--\PilotLargeCpuPrefillPct\% of the time while decoding the one-word answer took a median of \PilotSmallCpuDecodeMs\,ms (450\,M) and \PilotLargeCpuDecodeMs\,ms (3\,B), which suggests that input resolution will be the main lever on latency.
+On an \PilotCpu{} laptop, used solely to validate the measurement pipeline, a decision took a median of \PilotSmallCpuMedianMs\,ms (LFM 450\,M), \PilotLargeCpuMedianMs\,ms (LFM 3\,B) and \PilotQwenCpuMedianMs\,ms (Qwen 2\,B) on 10 CPU threads, and \PilotSmallGpuMedianMs, \PilotLargeGpuMedianMs{} and \PilotQwenGpuMedianMs\,ms on the integrated GPU (Table~\ref{tab:pilot_eff}). Qwen3.5-2B encodes the same frame into more tokens than the LFM models, offsetting its smaller language model. On the CPU, prefill (vision encoding and prompt processing) took \PilotSmallCpuPrefillPct--\PilotLargeCpuPrefillPct\% of the time, whereas decoding the one-word answer took a median of \PilotSmallCpuDecodeMs\,ms (450\,M) and \PilotLargeCpuDecodeMs\,ms (3\,B); input resolution should therefore be the principal lever on latency.
 
 \begin{table}[t]
 \centering
-\caption{Pilot efficiency on an \PilotCpu{} (\PilotRamGB\,GB, macOS \PilotOs, llama.cpp b\PilotLlamaBuild), prompt~\promptA, 30 timed requests after 3 warm-ups. Validates the pipeline only; edge results are in Table~\ref{tab:efficiency}.}
+\caption{Pilot efficiency on an \PilotCpu{} (\PilotRamGB\,GB, macOS \PilotOs, llama.cpp b\PilotLlamaBuild), prompt~\promptA, 30 timed requests after 3 warm-ups. Validates the pipeline only; main results are in Section~\ref{sec:results}.}
 \label{tab:pilot_eff}
 \footnotesize
 \setlength{\tabcolsep}{3pt}
 \input{generated/pilot_efficiency.tex}
 \end{table}
 
-\subsection{RQ1: accuracy versus model size, quantization, resolution and frames}
-\pending{Main accuracy table: one row per configuration on the test split, with F1, recall, FAR (hard negatives, normal) at default and calibrated operating points, AUROC, 95\% CIs. Then marginal plots: F1 versus parameters (one line per quantization), F1 versus resolution, F1 versus frames per decision.}
+\subsection{Main grid: overview}
+The grid comprises \RNConfigs{} VLM configurations and \RNDecisions{} model decisions on the development and test sets; \RNUnparsed{} answers were unparseable. Figures below refer to the test set (\BenchNTest{} samples) unless stated, with 95\% confidence intervals in brackets. Unless a table varies them, configurations use Q8\_0 weights, native resolution, one frame, prompt~\promptA{} and the integrated GPU. Re-running \RRetimeConfigs{} configurations to re-measure latency reproduced \RRetimeSame{} of \RRetimeTotal{} answers exactly.
 
-\pending{Text: size effect within LFM2.5-VL; quantization effect (expect Q8\_0 $\approx$ F16; Q4\_K\_M cost per size); resolution effect and its interaction with model size; whether 4/8 frames help and whether they help more on hard negatives.}
+\subsection{RQ1: accuracy versus prompt, model size, precision, resolution and frames}
+\textit{Prompt.} Table~\ref{tab:prompts} compares the prompts at the default operating point. The plain question \promptA{} was best or tied for every model, on development-set AUROC (our criterion for the rest of the grid) and on test F1. The detailed definition \promptB{} drove LFM2.5-VL-450M to answer ``yes'' to nearly every frame, including people standing or walking, and raised false alarms for the larger LFM models. The one-sentence criterion \promptBtwo{} had the opposite effect on Qwen3.5-2B: it rendered the model conservative, and it missed about half of the falls.
 
-\subsection{RQ2: latency, memory and power on edge devices}
+\begin{table}[t]
+\centering
+\caption{Prompts at the default operating point (test set, Q8\_0, native resolution, one frame). Recall and false-alarm rates (FAR) in \%.}
+\label{tab:prompts}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\IfFileExists{generated/res_prompts.tex}{\input{generated/res_prompts.tex}}{\pending{table}}
+\end{table}
+
+\textit{Default versus calibrated operating point.} With their own yes/no answers, all five models catch at least \RQwenSDefRecall\% of falls but raise false alarms on \RQwenLDefFarHard\% (Qwen3.5-4B) to \RLfmSDefFarHard\% (LFM2.5-VL-450M) of hard negatives (Table~\ref{tab:main}). The models discriminate far better than their answers suggest: test AUROC lies between \RLfmSAuroc{} and \RLfmLAuroc. Shifting the threshold on $p_\text{yes}$ to retain 95\% of development-set falls reduces hard-negative false alarms to \RLfmMCalFarHard--\RLfmSCalFarHard\% and raises F1 to \RLfmSCalFone--\RLfmLCalFone. Calibration benefits the smallest model most, cutting its false alarms from \RLfmSDefFarHard\% to \RLfmSCalFarHard\%, and Qwen3.5-4B least, whose default answer is already well placed. Thresholds do not transfer perfectly: on the test set, LFM2.5-VL-1.6B and LFM2.5-VL-450M caught \RLfmMCalRecall\% and \RLfmSCalRecall\% of falls rather than the targeted 95\%. After calibration, LFM2.5-VL-3B is the most accurate model (F1 \RLfmLCalFone, recall \RLfmLCalRecall\%, hard-negative FAR \RLfmLCalFarHard\%).
+
 \begin{table*}[t]
 \centering
-\caption{Efficiency on the edge devices. \pending{generate from results}}
-\label{tab:efficiency}
-\begin{tabular}{lllrrrrrrr}
-\toprule
-Device & Model & Quant & Res. & Median (ms) & p95 (ms) & TTFT (ms) & Peak RSS (GiB) & Power (W) & Streams \\
-\midrule
-\multicolumn{10}{c}{\pending{rows}} \\
-\bottomrule
-\end{tabular}
+\caption{Default and calibrated operating points (test set, Q8\_0, native resolution, one frame, prompt~A). Recall and hard-negative false-alarm rate (FAR$_\text{hard}$) in \% with 95\% confidence intervals.}
+\label{tab:main}
+\footnotesize
+\IfFileExists{generated/res_main.tex}{\input{generated/res_main.tex}}{\pending{table}}
 \end{table*}
 
-\pending{Text: latency scaling with image tokens; memory floor per model; energy per decision; streams per device at 1\,Hz.}
+\textit{Weight precision.} At fixed resolution, moving from 16-bit to Q8\_0 to Q4\_K\_M altered F1 by at most 0.02 for every model at native and 512\,px input, and by at most 0.03 at 256\,px (Table~\ref{tab:grid}). LFM2.5-VL-3B at native resolution attains F1 \CLfmLHalfNatOneFone, \CLfmLQeightNatOneFone{} and \CLfmLQfourNatOneFone{} at the three precisions. For these models, 4-bit weights are a safe choice.
+
+\textit{Input resolution.} Reducing the longest side to 512\,px cost at most 0.05 F1, lowered or preserved hard-negative false alarms for every model and precision, and cut latency by 20--40\% (Section~\ref{sec:rq2}). At 256\,px most models collapsed: F1 fell to \CLfmSQeightTwofiftysixOneFone{} for LFM2.5-VL-450M, \CLfmLQeightTwofiftysixOneFone{} for LFM2.5-VL-3B and \CQwenSQeightTwofiftysixOneFone{} for Qwen3.5-2B, chiefly through false alarms on hard negatives (\CLfmSQeightTwofiftysixOneFarHard\% for the 450\,M model). LFM2.5-VL-1.6B was the exception, retaining F1 \CLfmMQfourTwofiftysixOneFone{} at 256\,px with Q4\_K\_M weights. We have no explanation for this discrepancy; it is why that configuration sits on both Pareto frontiers.
+
+\begin{table*}[t]
+\centering
+\caption{Precision and input resolution (test set, prompt~A, one frame, calibrated operating point). p95 latency and peak RSS on the integrated GPU; the last column is the median prompt length in tokens, almost all of it image tokens.}
+\label{tab:grid}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\IfFileExists{generated/res_grid.tex}{\input{generated/res_grid.tex}}{\pending{table}}
+\end{table*}
+
+\textit{Temporal context.} Supplying the four or eight preceding frames helped no model (Table~\ref{tab:frames}) and was detrimental to the small ones: LFM2.5-VL-450M fell from F1 \CLfmSQeightNatOneFone{} with one frame to \CLfmSQeightNatFourFone{} with four and \CLfmSQeightNatEightFone{} with eight, its hard-negative false alarms doubling. Larger models were flat or slightly worse (LFM2.5-VL-3B: \CLfmLQeightNatOneFone, \CLfmLQeightNatFourFone, \CLfmLQeightNatEightFone; Qwen3.5-4B: \CQwenLQeightNatOneFone{} throughout), while latency grew roughly in proportion to frame count, reaching \CLfmLQeightNatEightPtf\,ms for LFM2.5-VL-3B with eight frames. Zero-shot, these models do not exploit short clips; temporal reasoning must be added outside the model, for example by requiring several consecutive positive decisions.
+
+\IfFileExists{generated/res_frames.tex}{
+\begin{table}[t]
+\centering
+\caption{Frames per decision (test set, Q8\_0, native, prompt~A, calibrated).}
+\label{tab:frames}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\input{generated/res_frames.tex}
+\end{table}}{}
+
+\textit{Is a VLM needed?} The pose-and-rule baseline was far weaker than any VLM (Table~\ref{tab:baseline}). YOLO11n-pose with a single frame reached F1 \CPoseNPoseNatOneFone{} and recall \CPoseNPoseNatOneDefRecall\%; clips raised F1 to \CPoseNPoseNatFourFone. No rule setting reached 95\% recall even on the development set. The culprit is the detector, not the rule: YOLO11n-pose found a person in only \RPoseDetDown\% of the \pd{} frames from the side and elevated cameras, against \RPoseDetNormal\% of frames of people standing or walking. A person lying on the floor, often at the edge of a wide-angle view, is what pose models handle worst. The baseline is fast (\RPoseNMs\,ms per frame on the GPU), so it could serve as an inexpensive first stage, but not as the detector.
+
+\IfFileExists{generated/res_baseline.tex}{
+\begin{table*}[t]
+\centering
+\caption{YOLO11 pose + rule baseline (test set). Rule parameters tuned on the development set; no setting reached the 95\% recall target, so the best development F1 was used.}
+\label{tab:baseline}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\input{generated/res_baseline.tex}
+\end{table*}}{}
+
+\subsection{RQ2: latency, memory and energy}
+\label{sec:rq2}
+On the integrated GPU, p95 latency of a single-frame decision ranged from \CLfmSQfourTwofiftysixOnePtf\,ms (LFM2.5-VL-450M, Q4\_K\_M, 256\,px) to \CQwenLQeightNatOnePtf\,ms (Qwen3.5-4B, Q8\_0, native). Latency tracks image tokens, not weight size: 256\,px input cut latency by 52--68\%, whereas 4-bit weights were no faster than 8- or 16-bit ones (Table~\ref{tab:grid}), because encoding the image, which is compute-bound, dominates the cost of a one-word answer. Precision instead sets the memory floor: LFM2.5-VL-3B needs \CLfmLHalfNatOneRss\,GiB at 16-bit, \CLfmLQeightNatOneRss\,GiB at Q8\_0 and \CLfmLQfourNatOneRss\,GiB at Q4\_K\_M, and resolution barely alters it.
+
+Running on the CPU alone was 6 to 17 times slower, typically tenfold (Table~\ref{tab:efficiency}). At one decision per second per camera, the GPU serves \CLfmSQeightFivetwelveOneStreams{} cameras with LFM2.5-VL-450M at 512\,px (F1 \CLfmSQeightFivetwelveOneFone), \CLfmMQfourTwofiftysixOneStreams{} with LFM2.5-VL-1.6B at 256\,px (F1 \CLfmMQfourTwofiftysixOneFone) and \CLfmLQeightFivetwelveOneStreams{} with LFM2.5-VL-3B at 512\,px (F1 \CLfmLQeightFivetwelveOneFone). On the CPU alone, only LFM2.5-VL-450M keeps pace with one camera at acceptable accuracy (512\,px, p95 \CLfmSQeightFivetwelveOneCpuPtf\,ms); LFM2.5-VL-3B needs \CLfmLQeightNatOneCpuPtf\,ms per decision.
+
+\IfFileExists{generated/res_efficiency.tex}{
+\begin{table*}[t]
+\centering
+\caption{Cost of the Pareto-optimal configurations on the integrated GPU and on the CPU alone (prompt~A, one frame). Streams: cameras served at one decision per second each, $\lfloor 1000/t_{95}\rfloor$. CPU timings over 60 test frames.}
+\label{tab:efficiency}
+\footnotesize
+\input{generated/res_efficiency.tex}
+\end{table*}}{}
+
+\textit{Energy.} During inference the package drew \PGpuWMin--\PGpuWMax\,W above idle on the GPU and \PCpuWMin--\PCpuWMax\,W on the CPU alone (Table~\ref{tab:power}). Because CPU decisions also take far longer, the same configuration required \PCpuGpuRatioMin{} to \PCpuGpuRatioMax{} times more energy per decision on the CPU. On the GPU a decision cost \PLfmSQeightFivetwelveOneGpuJ\,J with LFM2.5-VL-450M at 512\,px, \PLfmMQfourTwofiftysixOneGpuJ\,J with LFM2.5-VL-1.6B at 256\,px and \PLfmLQeightFivetwelveOneGpuJ\,J with LFM2.5-VL-3B at 512\,px. At one decision per second, joules per decision equal average watts per camera. As with latency, 4-bit weights conserved no energy (LFM2.5-VL-3B at native resolution: \PLfmLHalfNatOneGpuJ, \PLfmLQeightNatOneGpuJ{} and \PLfmLQfourNatOneGpuJ\,J at 16-bit, Q8\_0 and Q4\_K\_M), whereas lower resolution did.
+
+\IfFileExists{generated/res_power.tex}{
+\begin{table*}[t]
+\centering
+\caption{Power and energy of the Pareto-optimal configurations (prompt~A, one frame, 60 test frames each). Estimated CPU+GPU+Neural Engine package power from \texttt{powermetrics}; idle \PIdleW\,W. Energy per decision is above idle.}
+\label{tab:power}
+\footnotesize
+\input{generated/res_power.tex}
+\end{table*}}{}
 
 \subsection{RQ3: Pareto frontiers}
 \begin{figure}[t]
 \centering
-\fbox{\parbox[c][4.5cm][c]{0.9\columnwidth}{\centering\pending{Figure: F1 (calibrated) versus p95 latency on Jetson Orin Nano; Pareto-optimal points highlighted; pose baseline marked.}}}
-\caption{Accuracy--latency trade-off on the Jetson Orin Nano. \pending{}}
+\includegraphics[width=\columnwidth]{figures/pareto_latency.pdf}
+\caption{Accuracy against p95 latency on the integrated GPU (log scale), all configurations with prompt~A; the cross marks the pose baseline. Numbered points are Pareto-optimal: \KeyParetoLatency.}
 \label{fig:pareto_latency}
 \end{figure}
 
 \begin{figure}[t]
 \centering
-\fbox{\parbox[c][4.5cm][c]{0.9\columnwidth}{\centering\pending{Figure: F1 (calibrated) versus peak memory.}}}
-\caption{Accuracy--memory trade-off. \pending{}}
+\includegraphics[width=\columnwidth]{figures/pareto_memory.pdf}
+\caption{Accuracy against peak memory (RSS). Numbered points are Pareto-optimal: \KeyParetoMemory.}
 \label{fig:pareto_memory}
 \end{figure}
 
-\pending{Text: which configurations are Pareto-optimal on each device; where the pose baseline sits.}
+Figures~\ref{fig:pareto_latency} and~\ref{fig:pareto_memory} depict the trade-offs; both frontiers show a pronounced knee. Below about 130\,ms only LFM2.5-VL-450M is available, at F1 near 0.89 with 512\,px or native input. LFM2.5-VL-1.6B with Q4\_K\_M weights at 256\,px reaches F1 \CLfmMQfourTwofiftysixOneFone{} at \CLfmMQfourTwofiftysixOnePtf\,ms and \CLfmMQfourTwofiftysixOneRss\,GiB; beyond it, gains are marginal and costly. LFM2.5-VL-3B adds 0.03--0.04 F1 for three to four times the latency and 1.6--3.8 times the memory, depending on precision. No multi-frame configuration is Pareto-optimal, and smaller models dominate Qwen3.5-4B on both frontiers.
 
-\subsection{RQ4: hard negatives}
+\subsection{RQ4: hard negatives and viewpoints}
+\begin{table*}[t]
+\centering
+\caption{False-alarm rate (\%) per hard-negative type (test-set counts in brackets), Q8\_0, native, one frame, prompt~A.}
+\label{tab:hardneg}
+\footnotesize
+\IfFileExists{generated/res_subtypes.tex}{\input{generated/res_subtypes.tex}}{\pending{table}}
+\end{table*}
+
 \begin{table}[t]
 \centering
-\caption{False-alarm rate (\%) per hard-negative subtype for the Pareto-optimal configurations and the pose baseline. \pending{}}
-\label{tab:hardneg}
-\begin{tabular}{lccccc}
-\toprule
-Config & Crouch & Kneel & Bend & Sit & Lie (furn.) \\
-\midrule
-\multicolumn{6}{c}{\pending{rows}} \\
-\bottomrule
-\end{tabular}
+\caption{Recall (\%) by camera viewpoint (test-set \pd{} counts in brackets), calibrated operating point.}
+\label{tab:viewpoint}
+\footnotesize
+\IfFileExists{generated/res_viewpoint.tex}{\input{generated/res_viewpoint.tex}}{\pending{table}}
 \end{table}
 
-\pending{Text: which subtypes cause most alarms (pilot suggests kneeling / hands-and-knees and crouching); effect of prompt and of temporal context on each subtype; accuracy by viewpoint (overhead vs. oblique).}
-
-\subsection{Bounding-box output}
-\pending{For the best configuration only: prompt for a box around the person who is down; report how often the box overlaps the annotated person (IoU $\geq 0.5$) and the latency cost of the longer output.}
+Look-alike postures differ markedly in difficulty (Table~\ref{tab:hardneg}). At the calibrated operating point no model alarmed on a person bending or sitting on a sofa or bed, and false alarms for crouching stayed below 15\%. Kneeling, including on hands and knees, was the most troublesome posture for LFM2.5-VL-1.6B (\RLfmMCalFarKneel\%) and both Qwen models (\RQwenSCalFarKneel\% and \RQwenLCalFarKneel\%); for LFM2.5-VL-3B, kneeling and crouching were comparable (\RLfmLCalFarKneel\% and \RLfmLCalFarCrouch\%). The smallest model also mistook lying on a bed or sofa for lying on the floor (\RLfmSCalFarLieSofa\%), an error the larger models mostly avoided (LFM2.5-VL-3B \RLfmLCalFarLieSofa\%, Qwen3.5-4B \RQwenLCalFarLieSofa\%). By viewpoint (Table~\ref{tab:viewpoint}), overhead falls were easiest (recall at least \RQwenLCalRecallOverhead\%), whereas the elevated wide-angle MCF views proved hardest for the two smaller LFM models (\RLfmSCalRecallElevated\% and \RLfmMCalRecallElevated\%).
 
 \subsection{Failure cases}
 \begin{figure*}[t]
 \centering
-\fbox{\parbox[c][4cm][c]{0.95\textwidth}{\centering\pending{Figure: grid of missed falls and hard-negative false alarms for the recommended configurations. Faces blurred. Caption must state the source dataset licence (UR Fall and Le2i frames: CC BY-NC-SA).}}}
-\caption{Typical failures. \pending{}}
+\includegraphics[width=\textwidth]{figures/failures.pdf}
+\caption{Typical failures at the calibrated operating point, UR Fall test frames (CC BY-NC-SA 4.0, Kwolek and Kepski \cite{kwolek2014urfall}; faces blurred). Top row: missed \pd{} frames; bottom row: false alarms. \KeyFailures.}
 \label{fig:failures}
 \end{figure*}
+
+Figure~\ref{fig:failures} shows recurring failures. Missed frames are mostly people curled up on the floor, seen from behind at the image's lower edge, where little of the body is visible. False alarms are mostly people on hands and knees or crouching close to the floor and, for the smallest model, a person sitting on the floor.

@@ -17,6 +17,7 @@
 \usepackage{url}
 \usepackage[hidelinks]{hyperref}
 \usepackage{cite}
+\usepackage{placeins}
 
 % ---- Draft markers ------------------------------------------------------------
 % \pending{...}: result or detail that depends on experiments not yet run.
@@ -32,6 +33,14 @@
 \fi
 
 \input{generated/numbers.tex}
+\IfFileExists{generated/res_numbers.tex}{\input{generated/res_numbers.tex}}{}
+\IfFileExists{generated/res_power_numbers.tex}{\input{generated/res_power_numbers.tex}}{}
+\newif\iffullcheck\fullcheckfalse
+\IfFileExists{generated/full_check.tex}{\input{generated/full_check.tex}}{}
+\IfFileExists{generated/human_check.tex}{\input{generated/human_check.tex}\newcommand{\HumanCheckText}{A blind check by the author of a stratified random sample of 100 test frames agreed with the benchmark labels on \HumanAgree\% of the frames the author could label (Cohen's $\kappa = \HumanKappa$, \HumanUnsure{} marked unsure).}}{\newcommand{\HumanCheckText}{\pending{agreement of the blind human check of 100 test frames}}}
+\IfFileExists{generated/fig_pareto_latency_key.tex}{\input{generated/fig_pareto_latency_key.tex}}{\newcommand{\KeyParetoLatency}{}}
+\IfFileExists{generated/fig_failures_key.tex}{\input{generated/fig_failures_key.tex}}{\newcommand{\KeyFailures}{}}
+\IfFileExists{generated/fig_pareto_memory_key.tex}{\input{generated/fig_pareto_memory_key.tex}}{\newcommand{\KeyParetoMemory}{}}
 
 \newcommand{\pd}{\textit{person-down}}
 \newcommand{\promptA}{\texttt{A}}
@@ -40,12 +49,12 @@
 
 \begin{document}
 
-\title{How Small Can You Go? Accuracy--Efficiency Trade-offs of Edge Vision--Language Models for Person-Down Detection in Industrial Settings}
+\title{How Small Can You Go? Accuracy--Efficiency Trade-offs of Small Vision--Language Models for On-Device Person-Down Detection}
 
 \author{Moksh~Chadha%
-\thanks{\authornote{Affiliation, e-mail and ORCID. Confirm affiliation policy before listing a company.}}}
+\thanks{M.~Chadha is with the National Institute of Technology Hamirpur, Hamirpur, Himachal Pradesh 177005, India (e-mail: chadhamoksh@gmail.com).}}
 
-\markboth{Preprint -- first draft}{Chadha: Edge VLMs for Person-Down Detection}
+\markboth{Preprint}{Chadha: Small VLMs for On-Device Person-Down Detection}
 
 \maketitle
 
@@ -56,6 +65,7 @@
 \input{sections/methods}
 \input{sections/protocol}
 \input{sections/results}
+\FloatBarrier
 \input{sections/discussion}
 \input{sections/conclusion}
 \input{sections/backmatter}

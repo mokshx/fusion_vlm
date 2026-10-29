@@ -1,0 +1,59 @@
+{
+  "run_id": "65e31ae6",
+  "model": "qwen3.5-2b:Q4_K_M",
+  "args": {
+    "labels": "[PosixPath('data/benchmark/v1/labels_test.csv')]",
+    "images_root": ".",
+    "models": "['qwen3.5-2b:Q4_K_M']",
+    "prompts": "['A']",
+    "resolution": "512",
+    "n_frames": "1",
+    "limit": "60",
+    "log_times": "True",
+    "ngl": "0",
+    "threads": "10",
+    "max_tokens": "16",
+    "warmup": "3",
+    "server_args": "--no-mmap",
+    "out": "results/power/cpu.csv"
+  },
+  "env": {
+    "hostname": "chat.local",
+    "os": "macOS-26.5.2-arm64-arm-64bit",
+    "machine": "arm64",
+    "python": "3.12.9",
+    "cpu_count_logical": 14,
+    "cpu_count_physical": 14,
+    "ram_total_gb": 48.0,
+    "load_avg_1m": 10.56640625,
+    "llama_cpp_version": "version: 10090 (7347430f4) | built with AppleClang 21.0.0.21000099 for Darwin arm64",
+    "cpu": "Apple M4 Pro",
+    "perf_cores": "10",
+    "eff_cores": "4",
+    "power_source": "AC",
+    "low_power_mode": false,
+    "torch": "2.14.1"
+  },
+  "backend": {
+    "backend": "llamacpp",
+    "model_file": "Qwen3.5-2B-Q4_K_M.gguf",
+    "mmproj_file": "mmproj-F16.gguf",
+    "model_size_mb": 1221.500244140625,
+    "mmproj_size_mb": 637.2711791992188,
+    "n_gpu_layers": 0,
+    "mmproj_offload": false,
+    "threads": 10,
+    "ctx_size": 4096,
+    "image_max_tokens": null,
+    "load_s": 1.2741778750205413,
+    "extra_args": "--no-mmap",
+    "server_cmd": "llama-server -m models/Qwen3.5-2B-GGUF/Qwen3.5-2B-Q4_K_M.gguf --mmproj models/Qwen3.5-2B-GGUF/mmproj-F16.gguf --host 127.0.0.1 --port 49586 -ngl 0 -c 4096 -np 1 -cram 0 --no-webui --no-mmproj-offload -dev none -t 10 -rea off --no-mmap"
+  },
+  "memory": {
+    "peak_rss_mb": 3019.328125,
+    "peak_footprint_mb": 2962.9561462402344,
+    "sys_mem_delta_mb": 2842.9375,
+    "sys_mem_baseline_mb": 22445.515625
+  },
+  "wall_s": 214.296128988266
+}

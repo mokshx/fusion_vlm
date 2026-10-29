@@ -1,0 +1,9 @@
+{
+  "file": "answers.csv",
+  "answered": 98,
+  "unsure": 2,
+  "blank": 0,
+  "agreement": 0.9183673469387755,
+  "kappa": 0.8770774537472562,
+  "binary_agreement": 0.9387755102040817
+}

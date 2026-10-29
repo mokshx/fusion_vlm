@@ -1,0 +1,778 @@
+cand_id,label,subtype,note,sheet
+c0000,normal,standing,relabelled at review,urfall_hard_negative_low_00
+c0001,hard_negative,crouching,relabelled at review,urfall_hard_negative_low_00
+c0002,normal,standing,,urfall_normal_upright_00
+c0003,normal,standing,,urfall_normal_upright_00
+c0004,hard_negative,crouching,relabelled at review,urfall_hard_negative_low_00
+c0005,normal,standing,,urfall_normal_upright_00
+c0006,hard_negative,crouching,relabelled at review,urfall_hard_negative_low_00
+c0007,hard_negative,crouching,relabelled at review,urfall_hard_negative_low_00
+c0008,hard_negative,crouching,relabelled at review,urfall_hard_negative_low_00
+c0009,hard_negative,bending,,urfall_hard_negative_low_00
+c0010,hard_negative,bending,,urfall_hard_negative_low_00
+c0011,hard_negative,bending,,urfall_hard_negative_low_00
+c0012,normal,standing,,urfall_normal_upright_00
+c0013,normal,standing,,urfall_normal_upright_00
+c0014,normal,standing,relabelled at review,urfall_hard_negative_low_00
+c0015,hard_negative,bending,,urfall_hard_negative_low_00
+c0016,hard_negative,sitting_chair,relabelled at review,urfall_hard_negative_low_00
+c0017,hard_negative,sitting_chair,relabelled at review,urfall_hard_negative_low_00
+c0018,normal,standing,,urfall_normal_upright_00
+c0019,hard_negative,sitting_chair,relabelled at review,urfall_hard_negative_low_00
+c0020,hard_negative,sitting_chair,relabelled at review,urfall_hard_negative_low_00
+c0021,normal,standing,,urfall_normal_upright_00
+c0022,hard_negative,sitting_furniture,relabelled at review,urfall_hard_negative_low_00
+c0023,normal,standing,,urfall_normal_upright_00
+c0024,reject,,"transitional, getting up from bed",urfall_hard_negative_low_00
+c0025,hard_negative,lying_furniture,,urfall_hard_negative_lying_furniture_00
+c0026,hard_negative,lying_furniture,,urfall_hard_negative_lying_furniture_00
+c0027,hard_negative,lying_furniture,,urfall_hard_negative_lying_furniture_00
+c0028,normal,standing,,urfall_normal_upright_00
+c0029,normal,standing,,urfall_normal_upright_00
+c0030,reject,,"transitional, getting up from bed",urfall_hard_negative_low_00
+c0031,hard_negative,lying_furniture,,urfall_hard_negative_lying_furniture_00
+c0032,hard_negative,lying_furniture,,urfall_hard_negative_lying_furniture_00
+c0033,hard_negative,lying_furniture,,urfall_hard_negative_lying_furniture_00
+c0034,reject,,"too dark, person barely visible",urfall_normal_upright_00
+c0035,normal,standing,,urfall_normal_upright_00
+c0036,normal,standing,,urfall_normal_upright_00
+c0037,hard_negative,crouching,relabelled at review,urfall_hard_negative_low_00
+c0038,reject,,"too dark, person barely visible",urfall_normal_upright_00
+c0039,normal,standing,,urfall_normal_upright_00
+c0040,normal,standing,,urfall_normal_upright_00
+c0041,hard_negative,crouching,relabelled at review,urfall_hard_negative_low_00
+c0042,hard_negative,bending,,urfall_hard_negative_low_00
+c0043,reject,,"too dark, person barely visible",urfall_normal_upright_00
+c0044,normal,standing,,urfall_normal_upright_00
+c0045,normal,standing,,urfall_normal_upright_00
+c0046,hard_negative,crouching,relabelled at review,urfall_hard_negative_low_00
+c0047,reject,,"too dark, person barely visible",urfall_normal_upright_00
+c0048,normal,standing,,urfall_normal_upright_00
+c0049,normal,standing,,urfall_normal_upright_00
+c0050,hard_negative,bending,,urfall_hard_negative_low_00
+c0051,hard_negative,bending,,urfall_hard_negative_low_00
+c0052,reject,,"too dark, person barely visible",urfall_normal_upright_00
+c0053,normal,standing,,urfall_normal_upright_00
+c0054,hard_negative,bending,relabelled at review,urfall_normal_upright_00
+c0055,hard_negative,bending,,urfall_hard_negative_low_00
+c0056,hard_negative,bending,,urfall_hard_negative_low_00
+c0057,reject,,"too dark, person barely visible",urfall_normal_upright_00
+c0058,normal,standing,,urfall_normal_upright_00
+c0059,hard_negative,crouching,relabelled at review,urfall_normal_upright_00
+c0060,normal,standing,relabelled at review,urfall_hard_negative_low_00
+c0061,reject,,"too dark, person barely visible",urfall_normal_upright_00
+c0062,normal,standing,,urfall_normal_upright_00
+c0063,hard_negative,bending,relabelled at review,urfall_normal_upright_01
+c0064,hard_negative,sitting_furniture,relabelled at review,urfall_hard_negative_low_00
+c0065,hard_negative,sitting_furniture,relabelled at review,urfall_hard_negative_low_00
+c0066,reject,,"too dark, person barely visible",urfall_normal_upright_01
+c0067,normal,standing,,urfall_normal_upright_01
+c0068,hard_negative,bending,relabelled at review,urfall_normal_upright_01
+c0069,hard_negative,sitting_furniture,relabelled at review,urfall_hard_negative_low_00
+c0070,hard_negative,sitting_chair,relabelled at review,urfall_hard_negative_low_01
+c0071,reject,,"too dark, person barely visible",urfall_normal_upright_01
+c0072,normal,standing,,urfall_normal_upright_01
+c0073,hard_negative,bending,relabelled at review,urfall_normal_upright_01
+c0074,hard_negative,sitting_furniture,,urfall_hard_negative_low_01
+c0075,hard_negative,sitting_furniture,,urfall_hard_negative_low_01
+c0076,reject,,"too dark, person barely visible",urfall_normal_upright_01
+c0077,normal,standing,,urfall_normal_upright_01
+c0078,hard_negative,bending,relabelled at review,urfall_normal_upright_01
+c0079,reject,,"too dark, person not visible",urfall_hard_negative_lying_furniture_00
+c0080,hard_negative,lying_furniture,,urfall_hard_negative_lying_furniture_00
+c0081,reject,,"too dark, person barely visible",urfall_normal_upright_01
+c0082,normal,standing,,urfall_normal_upright_01
+c0083,normal,standing,,urfall_normal_upright_01
+c0084,hard_negative,sitting_furniture,,urfall_hard_negative_low_01
+c0085,hard_negative,lying_furniture,,urfall_hard_negative_lying_furniture_00
+c0086,hard_negative,lying_furniture,,urfall_hard_negative_lying_furniture_00
+c0087,hard_negative,lying_furniture,,urfall_hard_negative_lying_furniture_00
+c0088,normal,standing,,urfall_normal_upright_01
+c0089,normal,standing,,urfall_normal_upright_01
+c0090,hard_negative,sitting_furniture,,urfall_hard_negative_low_01
+c0091,hard_negative,lying_furniture,,urfall_hard_negative_lying_furniture_00
+c0092,hard_negative,lying_furniture,,urfall_hard_negative_lying_furniture_00
+c0093,hard_negative,lying_furniture,,urfall_hard_negative_lying_furniture_00
+c0094,normal,standing,,urfall_normal_upright_01
+c0095,hard_negative,sitting_chair,relabelled at review,urfall_hard_negative_low_01
+c0096,hard_negative,crouching,relabelled at review,urfall_hard_negative_low_01
+c0097,normal,standing,,urfall_normal_upright_01
+c0098,hard_negative,crouching,relabelled at review,urfall_hard_negative_low_01
+c0099,hard_negative,sitting_chair,relabelled at review,urfall_hard_negative_low_01
+c0100,hard_negative,sitting_chair,relabelled at review,urfall_hard_negative_low_01
+c0101,normal,standing,,urfall_normal_upright_01
+c0102,normal,standing,,urfall_normal_upright_01
+c0103,normal,standing,,urfall_normal_upright_01
+c0104,hard_negative,kneeling,relabelled at review,urfall_hard_negative_low_01
+c0105,hard_negative,kneeling,relabelled at review,urfall_person_down_lying_floor_deliberate_00
+c0106,person_down,lying_floor_deliberate,,urfall_person_down_lying_floor_deliberate_00
+c0107,person_down,lying_floor_deliberate,,urfall_person_down_lying_floor_deliberate_00
+c0108,hard_negative,kneeling,relabelled at review,urfall_hard_negative_low_01
+c0109,person_down,lying_floor_deliberate,,urfall_person_down_lying_floor_deliberate_00
+c0110,person_down,lying_floor_deliberate,,urfall_person_down_lying_floor_deliberate_00
+c0111,reject,,pushing up to stand; transitional,urfall_person_down_lying_floor_deliberate_00
+c0112,normal,standing,,urfall_normal_upright_01
+c0113,hard_negative,kneeling,relabelled at review,urfall_person_down_lying_floor_deliberate_00
+c0114,person_down,lying_floor_deliberate,,urfall_person_down_lying_floor_deliberate_00
+c0115,hard_negative,kneeling,relabelled at review,urfall_person_down_lying_floor_deliberate_00
+c0116,normal,standing,,urfall_normal_upright_01
+c0117,person_down,lying_floor_deliberate,,urfall_person_down_lying_floor_deliberate_00
+c0118,person_down,lying_floor_deliberate,,urfall_person_down_lying_floor_deliberate_00
+c0119,hard_negative,sitting_floor,relabelled at review,urfall_person_down_lying_floor_deliberate_00
+c0120,hard_negative,kneeling,relabelled at review,urfall_hard_negative_low_01
+c0121,reject,,all fours vs prone unclear,urfall_person_down_lying_floor_deliberate_00
+c0122,person_down,lying_floor_deliberate,,urfall_person_down_lying_floor_deliberate_00
+c0123,hard_negative,kneeling,relabelled at review,urfall_person_down_lying_floor_deliberate_00
+c0124,hard_negative,kneeling,relabelled at review,urfall_person_down_lying_floor_deliberate_00
+c0125,person_down,lying_floor_deliberate,,urfall_person_down_lying_floor_deliberate_00
+c0126,hard_negative,kneeling,relabelled at review,urfall_person_down_lying_floor_deliberate_00
+c0127,normal,standing,,urfall_normal_upright_01
+c0128,normal,standing,,urfall_normal_upright_01
+c0129,reject,,"transitional, starting to sit",urfall_normal_upright_01
+c0130,hard_negative,lying_furniture,,urfall_hard_negative_lying_furniture_00
+c0131,hard_negative,lying_furniture,,urfall_hard_negative_lying_furniture_00
+c0132,hard_negative,lying_furniture,,urfall_hard_negative_lying_furniture_00
+c0133,normal,standing,,urfall_normal_upright_01
+c0134,normal,standing,,urfall_normal_upright_01
+c0135,reject,,"transitional, starting to sit",urfall_normal_upright_01
+c0136,hard_negative,sitting_furniture,,urfall_hard_negative_low_01
+c0137,hard_negative,lying_furniture,,urfall_hard_negative_lying_furniture_00
+c0138,hard_negative,lying_furniture,,urfall_hard_negative_lying_furniture_00
+c0139,normal,standing,,urfall_normal_upright_01
+c0140,normal,standing,,urfall_normal_upright_01
+c0141,normal,standing,,urfall_normal_upright_02
+c0142,person_down,lying_floor_deliberate,,urfall_person_down_lying_floor_deliberate_00
+c0143,person_down,lying_floor_deliberate,,urfall_person_down_lying_floor_deliberate_00
+c0144,person_down,lying_floor_deliberate,,urfall_person_down_lying_floor_deliberate_00
+c0145,normal,standing,,urfall_normal_upright_02
+c0146,normal,standing,,urfall_normal_upright_02
+c0147,person_down,lying_floor_deliberate,,urfall_person_down_lying_floor_deliberate_00
+c0148,person_down,lying_floor_deliberate,,urfall_person_down_lying_floor_deliberate_00
+c0149,normal,standing,,urfall_normal_upright_02
+c0150,normal,standing,,urfall_normal_upright_02
+c0151,normal,standing,,urfall_normal_upright_02
+c0152,hard_negative,kneeling,relabelled at review,urfall_hard_negative_low_01
+c0153,person_down,lying_floor_deliberate,,urfall_person_down_lying_floor_deliberate_00
+c0154,normal,standing,,urfall_normal_upright_02
+c0155,person_down,fall,,urfall_person_down_fall_00
+c0156,person_down,fall,,urfall_person_down_fall_00
+c0157,reject,,no person in view yet,urfall_normal_upright_02
+c0158,person_down,fall,,urfall_person_down_fall_00
+c0159,person_down,fall,,urfall_person_down_fall_00
+c0160,person_down,fall,,urfall_person_down_fall_00
+c0161,person_down,fall,,urfall_person_down_fall_00
+c0162,person_down,fall,,urfall_person_down_fall_00
+c0163,person_down,fall,,urfall_person_down_fall_00
+c0164,normal,standing,,urfall_normal_upright_02
+c0165,normal,standing,,urfall_normal_upright_02
+c0166,reject,,"propped up after fall, torso not on floor; ambiguous",urfall_person_down_fall_00
+c0167,person_down,fall,,urfall_person_down_fall_00
+c0168,reject,,person mostly out of frame,urfall_normal_upright_02
+c0169,normal,standing,,urfall_normal_upright_02
+c0170,person_down,fall,,urfall_person_down_fall_00
+c0171,person_down,fall,,urfall_person_down_fall_00
+c0172,person_down,fall,,urfall_person_down_fall_00
+c0173,person_down,fall,,urfall_person_down_fall_00
+c0174,person_down,fall,,urfall_person_down_fall_00
+c0175,person_down,fall,,urfall_person_down_fall_00
+c0176,normal,standing,,urfall_normal_upright_02
+c0177,person_down,fall,,urfall_person_down_fall_00
+c0178,person_down,fall,,urfall_person_down_fall_00
+c0179,reject,,no person in view yet,urfall_normal_upright_02
+c0180,person_down,fall,,urfall_person_down_fall_00
+c0181,person_down,fall,,urfall_person_down_fall_00
+c0182,person_down,fall,,urfall_person_down_fall_00
+c0183,person_down,fall,,urfall_person_down_fall_00
+c0184,person_down,fall,,urfall_person_down_fall_00
+c0185,person_down,fall,,urfall_person_down_fall_00
+c0186,normal,standing,,urfall_normal_upright_02
+c0187,normal,standing,,urfall_normal_upright_02
+c0188,person_down,fall,,urfall_person_down_fall_00
+c0189,person_down,fall,,urfall_person_down_fall_00
+c0190,normal,standing,,urfall_normal_upright_02
+c0191,reject,,person mostly out of frame,urfall_normal_upright_02
+c0192,person_down,fall,,urfall_person_down_fall_00
+c0193,person_down,fall,,urfall_person_down_fall_00
+c0194,reject,,sitting up after fall; ambiguous,urfall_person_down_fall_00
+c0195,person_down,fall,,urfall_person_down_fall_00
+c0196,person_down,fall,,urfall_person_down_fall_01
+c0197,person_down,fall,,urfall_person_down_fall_01
+c0198,normal,standing,,urfall_normal_upright_02
+c0199,normal,standing,,urfall_normal_upright_02
+c0200,person_down,fall,,urfall_person_down_fall_01
+c0201,person_down,fall,,urfall_person_down_fall_01
+c0202,normal,standing,,urfall_normal_upright_02
+c0203,normal,standing,,urfall_normal_upright_02
+c0204,person_down,fall,,urfall_person_down_fall_01
+c0205,person_down,fall,,urfall_person_down_fall_01
+c0206,person_down,fall,,urfall_person_down_fall_01
+c0207,person_down,fall,,urfall_person_down_fall_01
+c0208,person_down,fall,,urfall_person_down_fall_01
+c0209,person_down,fall,,urfall_person_down_fall_01
+c0210,person_down,fall,,urfall_person_down_fall_01
+c0211,person_down,fall,,urfall_person_down_fall_01
+c0212,person_down,fall,,urfall_person_down_fall_01
+c0213,person_down,fall,,urfall_person_down_fall_01
+c0214,person_down,fall,,urfall_person_down_fall_01
+c0215,person_down,fall,,urfall_person_down_fall_01
+c0216,person_down,fall,,urfall_person_down_fall_01
+c0217,person_down,fall,,urfall_person_down_fall_01
+c0218,person_down,fall,,urfall_person_down_fall_01
+c0219,person_down,fall,,urfall_person_down_fall_01
+c0220,person_down,fall,,urfall_person_down_fall_01
+c0221,person_down,fall,,urfall_person_down_fall_01
+c0222,person_down,fall,,urfall_person_down_fall_01
+c0223,person_down,fall,,urfall_person_down_fall_01
+c0224,person_down,fall,,urfall_person_down_fall_01
+c0225,person_down,fall,,urfall_person_down_fall_01
+c0226,person_down,fall,,urfall_person_down_fall_01
+c0227,person_down,fall,,urfall_person_down_fall_01
+c0228,person_down,fall,,urfall_person_down_fall_01
+c0229,person_down,fall,,urfall_person_down_fall_01
+c0230,person_down,fall,,urfall_person_down_fall_02
+c0231,person_down,fall,,urfall_person_down_fall_02
+c0232,person_down,fall,,urfall_person_down_fall_02
+c0233,person_down,fall,,urfall_person_down_fall_02
+c0234,person_down,fall,,urfall_person_down_fall_02
+c0235,reject,,sitting up after fall; ambiguous,urfall_person_down_fall_02
+c0236,reject,,sitting beside chair after fall; ambiguous,urfall_person_down_fall_02
+c0237,reject,,sitting beside chair after fall; ambiguous,urfall_person_down_fall_02
+c0238,reject,,person almost entirely out of frame,urfall_person_down_fall_02
+c0239,person_down,fall,,urfall_person_down_fall_02
+c0240,person_down,fall,,urfall_person_down_fall_02
+c0241,person_down,fall,,urfall_person_down_fall_02
+c0242,person_down,fall,,urfall_person_down_fall_02
+c0243,person_down,fall,,urfall_person_down_fall_02
+c0244,person_down,fall,,urfall_person_down_fall_02
+c0245,person_down,fall,,urfall_person_down_fall_02
+c0246,person_down,fall,,urfall_person_down_fall_02
+c0247,person_down,fall,,urfall_person_down_fall_02
+c0248,person_down,fall,,urfall_person_down_fall_02
+c0249,person_down,fall,,urfall_person_down_fall_02
+c0250,person_down,fall,,urfall_person_down_fall_02
+c0251,person_down,fall,,urfall_person_down_fall_02
+c0252,person_down,fall,,urfall_person_down_fall_02
+c0253,person_down,fall,,urfall_person_down_fall_02
+c0254,person_down,fall,,urfall_person_down_fall_02
+c0255,person_down,fall,,urfall_person_down_fall_02
+c0256,person_down,fall,,urfall_person_down_fall_02
+c0257,person_down,fall,,urfall_person_down_fall_02
+c0258,person_down,fall,,mcf_person_down_fall_02
+c0259,person_down,fall,,mcf_person_down_fall_01
+c0260,person_down,fall,,mcf_person_down_fall_00
+c0261,person_down,fall,,mcf_person_down_fall_01
+c0262,person_down,fall,,mcf_person_down_fall_00
+c0263,person_down,fall,,mcf_person_down_fall_00
+c0264,person_down,fall,,mcf_person_down_fall_03
+c0265,person_down,fall,,mcf_person_down_fall_03
+c0266,person_down,fall,,mcf_person_down_fall_01
+c0267,person_down,fall,,mcf_person_down_fall_04
+c0268,reject,,"torso over table, small; ambiguous",mcf_person_down_fall_03
+c0269,person_down,fall,,mcf_person_down_fall_01
+c0270,reject,,half-seated against chair; ambiguous,mcf_person_down_fall_02
+c0271,person_down,fall,,mcf_person_down_fall_00
+c0272,person_down,fall,,mcf_person_down_fall_01
+c0273,person_down,fall,,mcf_person_down_fall_00
+c0274,person_down,fall,,mcf_person_down_fall_02
+c0275,person_down,fall,,mcf_person_down_fall_03
+c0276,person_down,fall,,mcf_person_down_fall_02
+c0277,person_down,fall,,mcf_person_down_fall_03
+c0278,person_down,fall,,mcf_person_down_fall_03
+c0279,person_down,fall,,mcf_person_down_fall_02
+c0280,person_down,fall,,mcf_person_down_fall_01
+c0281,person_down,fall,,mcf_person_down_fall_00
+c0282,person_down,fall,,mcf_person_down_fall_04
+c0283,reject,,half-seated against chair; ambiguous,mcf_person_down_fall_02
+c0284,person_down,fall,,mcf_person_down_fall_02
+c0285,person_down,fall,,mcf_person_down_fall_00
+c0286,person_down,fall,,mcf_person_down_fall_02
+c0287,person_down,fall,,mcf_person_down_fall_04
+c0288,person_down,fall,,mcf_person_down_fall_01
+c0289,person_down,fall,,mcf_person_down_fall_01
+c0290,person_down,fall,,mcf_person_down_fall_02
+c0291,person_down,fall,,mcf_person_down_fall_01
+c0292,person_down,fall,,mcf_person_down_fall_03
+c0293,person_down,fall,,mcf_person_down_fall_00
+c0294,reject,,torso draped over table; ambiguous,mcf_person_down_fall_03
+c0295,person_down,fall,,mcf_person_down_fall_00
+c0296,person_down,fall,,mcf_person_down_fall_03
+c0297,person_down,fall,,mcf_person_down_fall_03
+c0298,reject,,torso draped over table; ambiguous,mcf_person_down_fall_03
+c0299,person_down,fall,,mcf_person_down_fall_00
+c0300,person_down,fall,,mcf_person_down_fall_04
+c0301,person_down,fall,,mcf_person_down_fall_03
+c0302,person_down,fall,,mcf_person_down_fall_00
+c0303,person_down,fall,,mcf_person_down_fall_02
+c0304,person_down,fall,,mcf_person_down_fall_01
+c0305,person_down,fall,,mcf_person_down_fall_01
+c0306,person_down,fall,,mcf_person_down_fall_00
+c0307,person_down,fall,,mcf_person_down_fall_04
+c0308,reject,,person hidden behind armchair,mcf_person_down_fall_04
+c0309,person_down,fall,,mcf_person_down_fall_00
+c0310,person_down,fall,,mcf_person_down_fall_04
+c0311,person_down,fall,,mcf_person_down_fall_04
+c0312,person_down,fall,,mcf_person_down_fall_02
+c0313,person_down,fall,,mcf_person_down_fall_00
+c0314,person_down,fall,,mcf_person_down_fall_01
+c0315,person_down,fall,,mcf_person_down_fall_00
+c0316,person_down,fall,,mcf_person_down_fall_01
+c0317,person_down,fall,,mcf_person_down_fall_04
+c0318,person_down,fall,,mcf_person_down_fall_03
+c0319,person_down,fall,,mcf_person_down_fall_03
+c0320,person_down,fall,,mcf_person_down_fall_02
+c0321,person_down,fall,,mcf_person_down_fall_00
+c0322,reject,,torso draped over table; ambiguous,mcf_person_down_fall_03
+c0323,person_down,fall,,mcf_person_down_fall_04
+c0324,person_down,fall,,mcf_person_down_fall_04
+c0325,person_down,fall,,mcf_person_down_fall_00
+c0326,person_down,fall,,mcf_person_down_fall_00
+c0327,person_down,fall,,mcf_person_down_fall_01
+c0328,person_down,fall,,mcf_person_down_fall_01
+c0329,person_down,fall,,mcf_person_down_fall_04
+c0330,person_down,fall,,mcf_person_down_fall_00
+c0331,person_down,fall,,mcf_person_down_fall_02
+c0332,person_down,fall,,mcf_person_down_fall_02
+c0333,person_down,fall,,mcf_person_down_fall_02
+c0334,person_down,fall,,mcf_person_down_fall_02
+c0335,person_down,fall,,mcf_person_down_fall_01
+c0336,person_down,fall,,mcf_person_down_fall_04
+c0337,reject,,person too small in corner,mcf_person_down_fall_01
+c0338,person_down,fall,,mcf_person_down_fall_01
+c0339,person_down,fall,,mcf_person_down_fall_02
+c0340,person_down,fall,,mcf_person_down_fall_03
+c0341,reject,,sitting vs lying unclear,mcf_person_down_fall_01
+c0342,person_down,fall,,mcf_person_down_fall_03
+c0343,person_down,fall,,mcf_person_down_fall_00
+c0344,person_down,fall,,mcf_person_down_fall_04
+c0345,person_down,fall,,mcf_person_down_fall_02
+c0346,person_down,fall,,mcf_person_down_fall_02
+c0347,person_down,fall,,mcf_person_down_fall_02
+c0348,person_down,fall,,mcf_person_down_fall_04
+c0349,person_down,fall,,mcf_person_down_fall_01
+c0350,person_down,fall,,mcf_person_down_fall_01
+c0351,person_down,fall,,mcf_person_down_fall_02
+c0352,person_down,fall,,mcf_person_down_fall_03
+c0353,person_down,fall,,mcf_person_down_fall_02
+c0354,person_down,fall,,mcf_person_down_fall_02
+c0355,person_down,fall,,mcf_person_down_fall_00
+c0356,reject,,torso draped over table; ambiguous,mcf_person_down_fall_03
+c0357,person_down,fall,,mcf_person_down_fall_01
+c0358,person_down,fall,,mcf_person_down_fall_03
+c0359,person_down,fall,,mcf_person_down_fall_04
+c0360,person_down,fall,,mcf_person_down_fall_03
+c0361,person_down,fall,,mcf_person_down_fall_02
+c0362,person_down,fall,,mcf_person_down_fall_04
+c0363,reject,,torso draped over table; ambiguous,mcf_person_down_fall_03
+c0364,reject,,torso draped over table; ambiguous,mcf_person_down_fall_03
+c0365,person_down,fall,,mcf_person_down_fall_01
+c0366,person_down,fall,,mcf_person_down_fall_00
+c0367,reject,,torso draped over table; ambiguous,mcf_person_down_fall_03
+c0368,person_down,fall,,mcf_person_down_fall_03
+c0369,person_down,fall,,mcf_person_down_fall_00
+c0370,person_down,fall,,mcf_person_down_fall_00
+c0371,person_down,fall,,mcf_person_down_fall_02
+c0372,person_down,fall,,mcf_person_down_fall_01
+c0373,person_down,fall,,mcf_person_down_fall_00
+c0374,person_down,fall,,mcf_person_down_fall_04
+c0375,person_down,fall,,mcf_person_down_fall_01
+c0376,person_down,fall,,mcf_person_down_fall_00
+c0377,person_down,fall,,mcf_person_down_fall_04
+c0378,person_down,fall,,mcf_person_down_fall_04
+c0379,person_down,fall,,mcf_person_down_fall_03
+c0380,person_down,fall,,mcf_person_down_fall_00
+c0381,person_down,fall,,mcf_person_down_fall_04
+c0382,person_down,fall,,mcf_person_down_fall_02
+c0383,person_down,fall,,mcf_person_down_fall_01
+c0384,person_down,fall,,mcf_person_down_fall_04
+c0385,person_down,fall,,mcf_person_down_fall_01
+c0386,person_down,fall,,mcf_person_down_fall_02
+c0387,person_down,fall,,mcf_person_down_fall_00
+c0388,person_down,fall,,mcf_person_down_fall_03
+c0389,reject,,person small and unclear beside armchair,mcf_person_down_fall_04
+c0390,person_down,fall,,mcf_person_down_fall_04
+c0391,person_down,fall,,mcf_person_down_fall_04
+c0392,person_down,fall,,mcf_person_down_fall_04
+c0393,person_down,fall,,mcf_person_down_fall_03
+c0394,person_down,fall,,mcf_person_down_fall_01
+c0395,person_down,fall,,mcf_person_down_fall_03
+c0396,person_down,fall,,mcf_person_down_fall_02
+c0397,person_down,fall,,mcf_person_down_fall_02
+c0398,person_down,fall,,mcf_person_down_fall_04
+c0399,person_down,fall,,mcf_person_down_fall_00
+c0400,person_down,fall,,mcf_person_down_fall_03
+c0401,person_down,fall,,mcf_person_down_fall_00
+c0402,person_down,fall,,mcf_person_down_fall_04
+c0403,person_down,fall,,mcf_person_down_fall_04
+c0404,person_down,fall,,mcf_person_down_fall_02
+c0405,person_down,fall,,mcf_person_down_fall_01
+c0406,person_down,fall,,mcf_person_down_fall_01
+c0407,person_down,fall,,mcf_person_down_fall_04
+c0408,hard_negative,sitting_chair,,mcf_hard_negative_sitting_02
+c0409,hard_negative,sitting_chair,,mcf_hard_negative_sitting_03
+c0410,hard_negative,lying_furniture,,mcf_hard_negative_lying_furniture_00
+c0411,normal,walking,relabelled at review,mcf_hard_negative_other_02
+c0412,hard_negative,lying_furniture,relabelled at review,mcf_hard_negative_other_00
+c0413,hard_negative,sitting_chair,relabelled at review,mcf_hard_negative_sitting_00
+c0414,normal,walking,relabelled at review,mcf_hard_negative_other_02
+c0415,hard_negative,sitting_chair,,mcf_hard_negative_sitting_03
+c0416,hard_negative,sitting_chair,relabelled at review,mcf_hard_negative_sitting_00
+c0417,hard_negative,lying_furniture,,mcf_hard_negative_lying_furniture_01
+c0418,hard_negative,sitting_chair,,mcf_hard_negative_sitting_02
+c0419,hard_negative,sitting_furniture,,mcf_hard_negative_sitting_01
+c0420,hard_negative,sitting_chair,,mcf_hard_negative_sitting_02
+c0421,hard_negative,kneeling,relabelled at review,mcf_hard_negative_other_00
+c0422,hard_negative,lying_furniture,,mcf_hard_negative_lying_furniture_00
+c0423,hard_negative,sitting_chair,,mcf_hard_negative_sitting_02
+c0424,hard_negative,lying_furniture,,mcf_hard_negative_lying_furniture_00
+c0425,hard_negative,sitting_chair,,mcf_hard_negative_sitting_02
+c0426,hard_negative,sitting_chair,,mcf_hard_negative_sitting_02
+c0427,hard_negative,sitting_furniture,,mcf_hard_negative_sitting_01
+c0428,hard_negative,lying_furniture,,mcf_hard_negative_lying_furniture_00
+c0429,hard_negative,sitting_chair,relabelled at review,mcf_hard_negative_sitting_01
+c0430,hard_negative,sitting_furniture,,mcf_hard_negative_sitting_00
+c0431,normal,walking,relabelled at review,mcf_hard_negative_other_02
+c0432,hard_negative,sitting_furniture,,mcf_hard_negative_sitting_01
+c0433,hard_negative,sitting_chair,,mcf_hard_negative_sitting_02
+c0434,hard_negative,bending,relabelled at review,mcf_hard_negative_other_01
+c0435,hard_negative,lying_furniture,,mcf_hard_negative_lying_furniture_00
+c0436,hard_negative,lying_furniture,,mcf_hard_negative_lying_furniture_00
+c0437,hard_negative,sitting_furniture,,mcf_hard_negative_sitting_01
+c0438,hard_negative,lying_furniture,,mcf_hard_negative_lying_furniture_00
+c0439,hard_negative,lying_furniture,,mcf_hard_negative_lying_furniture_00
+c0440,normal,standing,relabelled at review,mcf_hard_negative_other_00
+c0441,normal,standing,relabelled at review,mcf_hard_negative_other_00
+c0442,hard_negative,sitting_furniture,,mcf_hard_negative_sitting_01
+c0443,hard_negative,sitting_chair,,mcf_hard_negative_sitting_02
+c0444,hard_negative,sitting_furniture,,mcf_hard_negative_sitting_00
+c0445,hard_negative,sitting_furniture,,mcf_hard_negative_sitting_01
+c0446,normal,standing,relabelled at review,mcf_hard_negative_other_02
+c0447,hard_negative,crouching,,mcf_hard_negative_other_00
+c0448,hard_negative,bending,relabelled at review,mcf_hard_negative_other_01
+c0449,normal,standing,relabelled at review,mcf_hard_negative_other_00
+c0450,hard_negative,sitting_chair,relabelled at review,mcf_hard_negative_sitting_00
+c0451,hard_negative,crouching,,mcf_hard_negative_other_01
+c0452,hard_negative,crouching,,mcf_hard_negative_other_01
+c0453,hard_negative,sitting_chair,,mcf_hard_negative_sitting_02
+c0454,hard_negative,sitting_furniture,,mcf_hard_negative_sitting_00
+c0455,hard_negative,sitting_chair,,mcf_hard_negative_sitting_03
+c0456,reject,,person too small at frame edge,mcf_hard_negative_sitting_02
+c0457,reject,,no person visible in this camera,mcf_hard_negative_sitting_01
+c0458,hard_negative,lying_furniture,,mcf_hard_negative_lying_furniture_00
+c0459,reject,,person too small on sofa,mcf_hard_negative_other_00
+c0460,hard_negative,sitting_chair,,mcf_hard_negative_sitting_03
+c0461,hard_negative,bending,relabelled at review,mcf_hard_negative_other_01
+c0462,normal,walking,relabelled at review,mcf_hard_negative_other_02
+c0463,normal,standing,relabelled at review,mcf_hard_negative_other_00
+c0464,hard_negative,bending,,mcf_hard_negative_other_02
+c0465,reject,,no person visible in this camera,mcf_hard_negative_sitting_01
+c0466,reject,,person too small to judge posture,mcf_hard_negative_other_00
+c0467,hard_negative,bending,relabelled at review,mcf_hard_negative_other_01
+c0468,hard_negative,sitting_chair,relabelled at review,mcf_hard_negative_sitting_00
+c0469,hard_negative,lying_furniture,,mcf_hard_negative_lying_furniture_00
+c0470,hard_negative,sitting_furniture,,mcf_hard_negative_sitting_01
+c0471,hard_negative,sitting_chair,relabelled at review,mcf_hard_negative_sitting_00
+c0472,hard_negative,bending,relabelled at review,mcf_hard_negative_other_01
+c0473,hard_negative,sitting_furniture,,mcf_hard_negative_sitting_00
+c0474,hard_negative,sitting_chair,,mcf_hard_negative_sitting_02
+c0475,hard_negative,bending,,mcf_hard_negative_other_02
+c0476,hard_negative,crouching,relabelled at review,mcf_hard_negative_other_02
+c0477,hard_negative,sitting_furniture,,mcf_hard_negative_sitting_00
+c0478,hard_negative,lying_furniture,,mcf_hard_negative_lying_furniture_00
+c0479,hard_negative,sitting_chair,,mcf_hard_negative_sitting_02
+c0480,hard_negative,kneeling,relabelled at review,mcf_hard_negative_other_00
+c0481,hard_negative,bending,,mcf_hard_negative_other_02
+c0482,hard_negative,kneeling,relabelled at review,mcf_hard_negative_other_02
+c0483,hard_negative,bending,,mcf_hard_negative_other_02
+c0484,hard_negative,sitting_chair,,mcf_hard_negative_sitting_02
+c0485,hard_negative,crouching,,mcf_hard_negative_other_01
+c0486,hard_negative,sitting_chair,relabelled at review,mcf_hard_negative_sitting_00
+c0487,hard_negative,sitting_chair,relabelled at review,mcf_hard_negative_sitting_00
+c0488,normal,standing,relabelled at review,mcf_hard_negative_other_00
+c0489,hard_negative,kneeling,relabelled at review,mcf_hard_negative_other_02
+c0490,hard_negative,bending,,mcf_hard_negative_other_02
+c0491,reject,,"posture unclear, several people",mcf_hard_negative_other_00
+c0492,reject,,"second person partly visible, posture unclear",mcf_hard_negative_other_02
+c0493,hard_negative,bending,,mcf_hard_negative_other_02
+c0494,hard_negative,sitting_chair,,mcf_hard_negative_sitting_02
+c0495,hard_negative,sitting_chair,relabelled at review,mcf_hard_negative_sitting_00
+c0496,hard_negative,sitting_furniture,,mcf_hard_negative_sitting_00
+c0497,hard_negative,crouching,,mcf_hard_negative_other_00
+c0498,hard_negative,sitting_chair,,mcf_hard_negative_sitting_03
+c0499,reject,,person too small to judge posture,mcf_hard_negative_other_02
+c0500,hard_negative,lying_furniture,,mcf_hard_negative_lying_furniture_00
+c0501,hard_negative,sitting_furniture,,mcf_hard_negative_sitting_01
+c0502,hard_negative,sitting_chair,,mcf_hard_negative_sitting_02
+c0503,hard_negative,crouching,,mcf_hard_negative_other_01
+c0504,hard_negative,lying_furniture,,mcf_hard_negative_lying_furniture_00
+c0505,hard_negative,sitting_furniture,,mcf_hard_negative_sitting_00
+c0506,hard_negative,crouching,,mcf_hard_negative_other_01
+c0507,hard_negative,sitting_furniture,,mcf_hard_negative_sitting_01
+c0508,hard_negative,sitting_furniture,,mcf_hard_negative_sitting_00
+c0509,hard_negative,sitting_chair,,mcf_hard_negative_sitting_02
+c0510,normal,walking,relabelled at review,mcf_hard_negative_other_02
+c0511,hard_negative,sitting_chair,,mcf_hard_negative_sitting_03
+c0512,hard_negative,bending,relabelled at review,mcf_hard_negative_other_01
+c0513,hard_negative,bending,,mcf_hard_negative_other_02
+c0514,hard_negative,crouching,,mcf_hard_negative_other_01
+c0515,hard_negative,lying_furniture,,mcf_hard_negative_lying_furniture_00
+c0516,hard_negative,sitting_furniture,,mcf_hard_negative_sitting_01
+c0517,hard_negative,sitting_furniture,,mcf_hard_negative_sitting_01
+c0518,hard_negative,sitting_furniture,,mcf_hard_negative_sitting_01
+c0519,hard_negative,crouching,,mcf_hard_negative_other_01
+c0520,hard_negative,sitting_furniture,,mcf_hard_negative_sitting_01
+c0521,hard_negative,sitting_chair,relabelled at review,mcf_hard_negative_sitting_00
+c0522,hard_negative,crouching,,mcf_hard_negative_other_00
+c0523,hard_negative,lying_furniture,,mcf_hard_negative_lying_furniture_00
+c0524,normal,walking,relabelled at review,mcf_hard_negative_other_01
+c0525,hard_negative,lying_furniture,,mcf_hard_negative_lying_furniture_00
+c0526,hard_negative,kneeling,relabelled at review,mcf_hard_negative_other_00
+c0527,hard_negative,sitting_furniture,,mcf_hard_negative_sitting_01
+c0528,hard_negative,sitting_furniture,,mcf_hard_negative_sitting_01
+c0529,hard_negative,crouching,,mcf_hard_negative_other_00
+c0530,normal,standing,relabelled at review,mcf_hard_negative_other_01
+c0531,hard_negative,crouching,,mcf_hard_negative_other_01
+c0532,hard_negative,kneeling,relabelled at review,mcf_hard_negative_other_00
+c0533,hard_negative,sitting_chair,,mcf_hard_negative_sitting_02
+c0534,hard_negative,crouching,,mcf_hard_negative_other_01
+c0535,hard_negative,lying_furniture,relabelled at review,mcf_hard_negative_other_01
+c0536,hard_negative,sitting_chair,,mcf_hard_negative_sitting_02
+c0537,hard_negative,lying_furniture,relabelled at review,mcf_hard_negative_other_00
+c0538,hard_negative,bending,,mcf_hard_negative_other_02
+c0539,hard_negative,sitting_chair,relabelled at review,mcf_hard_negative_sitting_00
+c0540,hard_negative,lying_furniture,,mcf_hard_negative_lying_furniture_00
+c0541,hard_negative,lying_furniture,,mcf_hard_negative_lying_furniture_00
+c0542,hard_negative,sitting_furniture,,mcf_hard_negative_sitting_01
+c0543,hard_negative,sitting_furniture,,mcf_hard_negative_sitting_00
+c0544,reject,,person too small to judge posture,mcf_hard_negative_other_01
+c0545,hard_negative,sitting_furniture,,mcf_hard_negative_sitting_00
+c0546,hard_negative,sitting_chair,,mcf_hard_negative_sitting_02
+c0547,hard_negative,crouching,,mcf_hard_negative_other_01
+c0548,hard_negative,lying_furniture,relabelled at review,mcf_hard_negative_other_00
+c0549,reject,,person not clearly visible,mcf_hard_negative_sitting_02
+c0550,hard_negative,lying_furniture,,mcf_hard_negative_lying_furniture_00
+c0551,hard_negative,kneeling,relabelled at review,mcf_hard_negative_other_02
+c0552,hard_negative,lying_furniture,,mcf_hard_negative_lying_furniture_00
+c0553,hard_negative,lying_furniture,,mcf_hard_negative_lying_furniture_00
+c0554,hard_negative,sitting_chair,,mcf_hard_negative_sitting_02
+c0555,hard_negative,bending,relabelled at review,mcf_hard_negative_other_00
+c0556,normal,standing,relabelled at review,mcf_hard_negative_other_00
+c0557,hard_negative,sitting_chair,,mcf_hard_negative_sitting_03
+c0558,hard_negative,sitting_furniture,,mcf_hard_negative_sitting_00
+c0559,hard_negative,sitting_chair,,mcf_hard_negative_sitting_02
+c0560,hard_negative,sitting_furniture,,mcf_hard_negative_sitting_00
+c0561,hard_negative,crouching,relabelled at review,mcf_hard_negative_other_02
+c0562,hard_negative,sitting_chair,,mcf_hard_negative_sitting_02
+c0563,hard_negative,sitting_chair,,mcf_hard_negative_sitting_02
+c0564,reject,,"transitional, getting off sofa",mcf_hard_negative_other_01
+c0565,hard_negative,bending,relabelled at review,mcf_hard_negative_other_01
+c0566,hard_negative,sitting_furniture,,mcf_hard_negative_sitting_01
+c0567,hard_negative,lying_furniture,,mcf_hard_negative_lying_furniture_00
+c0568,hard_negative,lying_furniture,,mcf_hard_negative_lying_furniture_00
+c0569,hard_negative,sitting_chair,,mcf_hard_negative_sitting_02
+c0570,hard_negative,sitting_furniture,,mcf_hard_negative_sitting_01
+c0571,hard_negative,bending,relabelled at review,mcf_hard_negative_other_01
+c0572,hard_negative,sitting_chair,,mcf_hard_negative_sitting_02
+c0573,hard_negative,crouching,,mcf_hard_negative_other_01
+c0574,hard_negative,lying_furniture,relabelled at review,mcf_hard_negative_other_01
+c0575,hard_negative,sitting_furniture,,mcf_hard_negative_sitting_01
+c0576,hard_negative,sitting_furniture,,mcf_hard_negative_sitting_01
+c0577,hard_negative,kneeling,relabelled at review,mcf_hard_negative_other_00
+c0578,normal,standing,relabelled at review,mcf_hard_negative_other_01
+c0579,hard_negative,lying_furniture,,mcf_hard_negative_lying_furniture_00
+c0580,hard_negative,sitting_chair,relabelled at review,mcf_hard_negative_sitting_00
+c0581,hard_negative,lying_furniture,,mcf_hard_negative_lying_furniture_00
+c0582,hard_negative,sitting_chair,,mcf_hard_negative_sitting_03
+c0583,hard_negative,sitting_furniture,,mcf_hard_negative_sitting_01
+c0584,hard_negative,bending,,mcf_hard_negative_other_02
+c0585,reject,,person too small on sofa,mcf_hard_negative_other_00
+c0586,hard_negative,bending,,mcf_hard_negative_other_02
+c0587,hard_negative,lying_furniture,,mcf_hard_negative_lying_furniture_00
+c0588,hard_negative,kneeling,relabelled at review,mcf_hard_negative_other_00
+c0589,hard_negative,bending,,mcf_hard_negative_other_02
+c0590,hard_negative,sitting_furniture,,mcf_hard_negative_sitting_00
+c0591,normal,standing,relabelled at review,mcf_hard_negative_other_00
+c0592,normal,standing,relabelled at review,mcf_hard_negative_other_02
+c0593,hard_negative,lying_furniture,,mcf_hard_negative_lying_furniture_00
+c0594,reject,,person too small on sofa,mcf_hard_negative_other_00
+c0595,hard_negative,sitting_furniture,,mcf_hard_negative_sitting_00
+c0596,reject,,person too small at frame edge,mcf_hard_negative_sitting_01
+c0597,hard_negative,sitting_chair,relabelled at review,mcf_hard_negative_sitting_00
+c0598,hard_negative,sitting_furniture,,mcf_hard_negative_sitting_01
+c0599,hard_negative,kneeling,relabelled at review,mcf_hard_negative_other_00
+c0600,hard_negative,lying_furniture,,mcf_hard_negative_lying_furniture_01
+c0601,hard_negative,lying_furniture,,mcf_hard_negative_lying_furniture_00
+c0602,hard_negative,crouching,,mcf_hard_negative_other_00
+c0603,reject,,"posture unclear, several people",mcf_hard_negative_other_00
+c0604,hard_negative,sitting_chair,,mcf_hard_negative_sitting_02
+c0605,hard_negative,lying_furniture,,mcf_hard_negative_lying_furniture_00
+c0606,hard_negative,lying_furniture,,mcf_hard_negative_lying_furniture_00
+c0607,hard_negative,sitting_chair,,mcf_hard_negative_sitting_02
+c0608,hard_negative,kneeling,relabelled at review,mcf_hard_negative_other_00
+c0609,hard_negative,lying_furniture,relabelled at review,mcf_hard_negative_other_01
+c0610,hard_negative,sitting_chair,relabelled at review,mcf_hard_negative_sitting_00
+c0611,hard_negative,sitting_furniture,,mcf_hard_negative_sitting_00
+c0612,hard_negative,crouching,,mcf_hard_negative_other_01
+c0613,hard_negative,sitting_chair,relabelled at review,mcf_hard_negative_sitting_00
+c0614,hard_negative,bending,,mcf_hard_negative_other_02
+c0615,hard_negative,sitting_furniture,,mcf_hard_negative_sitting_01
+c0616,hard_negative,sitting_chair,,mcf_hard_negative_sitting_03
+c0617,hard_negative,sitting_furniture,,mcf_hard_negative_sitting_01
+c0618,hard_negative,sitting_chair,,mcf_hard_negative_sitting_02
+c0619,hard_negative,bending,,mcf_hard_negative_other_02
+c0620,hard_negative,sitting_chair,,mcf_hard_negative_sitting_02
+c0621,hard_negative,sitting_furniture,,mcf_hard_negative_sitting_01
+c0622,normal,standing,relabelled at review,mcf_hard_negative_other_02
+c0623,hard_negative,crouching,,mcf_hard_negative_other_01
+c0624,hard_negative,sitting_chair,relabelled at review,mcf_hard_negative_sitting_00
+c0625,hard_negative,bending,relabelled at review,mcf_hard_negative_other_01
+c0626,hard_negative,sitting_furniture,,mcf_hard_negative_sitting_01
+c0627,normal,walking,,mcf_normal_walking_00
+c0628,normal,walking,,mcf_normal_walking_02
+c0629,reject,,"bent-knee pose, possibly fall onset",mcf_normal_walking_00
+c0630,normal,walking,,mcf_normal_walking_01
+c0631,reject,,person mostly out of frame,mcf_normal_walking_04
+c0632,normal,walking,,mcf_normal_walking_02
+c0633,normal,walking,,mcf_normal_walking_00
+c0634,reject,,person not visible in this camera,mcf_normal_walking_00
+c0635,normal,walking,,mcf_normal_walking_00
+c0636,normal,walking,,mcf_normal_walking_03
+c0637,normal,walking,,mcf_normal_walking_02
+c0638,normal,walking,,mcf_normal_walking_03
+c0639,normal,walking,,mcf_normal_walking_00
+c0640,normal,walking,,mcf_normal_walking_04
+c0641,normal,walking,,mcf_normal_walking_02
+c0642,normal,standing,,mcf_normal_standing_00
+c0643,normal,walking,,mcf_normal_walking_02
+c0644,normal,walking,,mcf_normal_walking_01
+c0645,normal,walking,,mcf_normal_walking_01
+c0646,normal,walking,,mcf_normal_walking_00
+c0647,normal,standing,,mcf_normal_standing_00
+c0648,hard_negative,bending,relabelled at review,mcf_normal_walking_04
+c0649,normal,walking,,mcf_normal_walking_03
+c0650,normal,walking,,mcf_normal_walking_02
+c0651,normal,walking,,mcf_normal_walking_00
+c0652,normal,standing,,mcf_normal_standing_00
+c0653,normal,standing,,mcf_normal_standing_00
+c0654,normal,walking,,mcf_normal_walking_01
+c0655,normal,walking,,mcf_normal_walking_03
+c0656,normal,standing,,mcf_normal_standing_00
+c0657,normal,walking,,mcf_normal_walking_02
+c0658,normal,standing,,mcf_normal_standing_00
+c0659,normal,walking,,mcf_normal_walking_01
+c0660,normal,standing,,mcf_normal_standing_00
+c0661,normal,standing,,mcf_normal_standing_00
+c0662,normal,walking,,mcf_normal_walking_02
+c0663,normal,walking,,mcf_normal_walking_00
+c0664,normal,walking,,mcf_normal_walking_01
+c0665,normal,standing,,mcf_normal_standing_00
+c0666,normal,walking,,mcf_normal_walking_03
+c0667,normal,walking,,mcf_normal_walking_03
+c0668,normal,walking,,mcf_normal_walking_03
+c0669,normal,walking,,mcf_normal_walking_01
+c0670,normal,walking,,mcf_normal_walking_00
+c0671,normal,walking,,mcf_normal_walking_01
+c0672,normal,walking,,mcf_normal_walking_01
+c0673,normal,walking,,mcf_normal_walking_02
+c0674,normal,walking,,mcf_normal_walking_00
+c0675,normal,standing,,mcf_normal_standing_00
+c0676,normal,walking,,mcf_normal_walking_03
+c0677,normal,walking,,mcf_normal_walking_03
+c0678,normal,walking,,mcf_normal_walking_01
+c0679,normal,walking,,mcf_normal_walking_02
+c0680,normal,walking,,mcf_normal_walking_01
+c0681,reject,,person too small to judge posture,mcf_normal_walking_04
+c0682,normal,walking,,mcf_normal_walking_01
+c0683,normal,walking,,mcf_normal_walking_00
+c0684,reject,,person not visible in this camera,mcf_normal_walking_00
+c0685,normal,walking,,mcf_normal_walking_00
+c0686,normal,standing,,mcf_normal_standing_00
+c0687,normal,walking,,mcf_normal_walking_02
+c0688,normal,standing,,mcf_normal_standing_00
+c0689,normal,walking,,mcf_normal_walking_03
+c0690,normal,walking,,mcf_normal_walking_01
+c0691,hard_negative,bending,relabelled at review,mcf_normal_walking_03
+c0692,normal,walking,,mcf_normal_walking_03
+c0693,normal,walking,,mcf_normal_walking_03
+c0694,normal,walking,,mcf_normal_walking_01
+c0695,normal,walking,,mcf_normal_walking_01
+c0696,normal,standing,,mcf_normal_standing_00
+c0697,normal,walking,,mcf_normal_walking_00
+c0698,normal,walking,,mcf_normal_walking_00
+c0699,normal,walking,,mcf_normal_walking_01
+c0700,normal,walking,,mcf_normal_walking_04
+c0701,normal,walking,,mcf_normal_walking_02
+c0702,normal,standing,,mcf_normal_standing_00
+c0703,normal,walking,,mcf_normal_walking_03
+c0704,normal,walking,,mcf_normal_walking_00
+c0705,normal,walking,,mcf_normal_walking_01
+c0706,normal,walking,,mcf_normal_walking_02
+c0707,hard_negative,bending,relabelled at review,mcf_normal_walking_03
+c0708,normal,walking,,mcf_normal_walking_02
+c0709,normal,walking,,mcf_normal_walking_02
+c0710,normal,walking,,mcf_normal_walking_01
+c0711,normal,walking,,mcf_normal_walking_03
+c0712,normal,walking,,mcf_normal_walking_00
+c0713,normal,walking,,mcf_normal_walking_03
+c0714,normal,walking,,mcf_normal_walking_02
+c0715,normal,walking,,mcf_normal_walking_01
+c0716,normal,walking,,mcf_normal_walking_03
+c0717,normal,walking,,mcf_normal_walking_01
+c0718,normal,walking,,mcf_normal_walking_02
+c0719,reject,,"two partly visible people, unclear",mcf_normal_walking_04
+c0720,normal,walking,,mcf_normal_walking_00
+c0721,reject,,person not visible in this camera,mcf_normal_walking_00
+c0722,normal,walking,,mcf_normal_walking_00
+c0723,normal,standing,,mcf_normal_standing_00
+c0724,normal,standing,,mcf_normal_standing_00
+c0725,normal,walking,,mcf_normal_walking_00
+c0726,hard_negative,bending,relabelled at review,mcf_normal_walking_02
+c0727,normal,walking,,mcf_normal_walking_02
+c0728,normal,walking,,mcf_normal_walking_03
+c0729,normal,walking,,mcf_normal_walking_03
+c0730,normal,walking,,mcf_normal_walking_00
+c0731,normal,walking,,mcf_normal_walking_03
+c0732,normal,walking,,mcf_normal_walking_01
+c0733,normal,walking,,mcf_normal_walking_02
+c0734,normal,walking,,mcf_normal_walking_00
+c0735,normal,walking,,mcf_normal_walking_02
+c0736,normal,standing,,mcf_normal_standing_00
+c0737,normal,walking,,mcf_normal_walking_03
+c0738,normal,walking,,mcf_normal_walking_00
+c0739,normal,walking,,mcf_normal_walking_01
+c0740,normal,walking,,mcf_normal_walking_01
+c0741,normal,standing,,mcf_normal_standing_00
+c0742,normal,walking,,mcf_normal_walking_02
+c0743,normal,walking,,mcf_normal_walking_00
+c0744,normal,walking,,mcf_normal_walking_01
+c0745,normal,walking,,mcf_normal_walking_03
+c0746,normal,walking,,mcf_normal_walking_01
+c0747,normal,walking,,mcf_normal_walking_02
+c0748,normal,walking,,mcf_normal_walking_03
+c0749,normal,walking,,mcf_normal_walking_03
+c0750,normal,walking,,mcf_normal_walking_00
+c0751,hard_negative,bending,relabelled at review,mcf_normal_walking_03
+c0752,normal,walking,,mcf_normal_walking_04
+c0753,normal,standing,,mcf_normal_standing_00
+c0754,normal,walking,,mcf_normal_walking_01
+c0755,normal,walking,,mcf_normal_walking_02
+c0756,normal,standing,,mcf_normal_standing_00
+c0757,normal,walking,,mcf_normal_walking_02
+c0758,normal,walking,,mcf_normal_walking_02
+c0759,normal,walking,,mcf_normal_walking_00
+c0760,normal,walking,,mcf_normal_walking_03
+c0761,normal,walking,,mcf_normal_walking_01
+c0762,normal,standing,,mcf_normal_standing_00
+c0763,reject,,half-squat with mop; neither upright nor crouching,mcf_normal_standing_00
+c0764,normal,walking,,mcf_normal_walking_03
+c0765,normal,walking,,mcf_normal_walking_01
+c0766,normal,walking,,mcf_normal_walking_01
+c0767,normal,walking,,mcf_normal_walking_02
+c0768,reject,,person too small at frame edge,mcf_normal_walking_00
+c0769,normal,walking,,mcf_normal_walking_03
+c0770,normal,walking,,mcf_normal_walking_02
+c0771,hard_negative,bending,relabelled at review,mcf_normal_walking_04
+c0772,normal,walking,,mcf_normal_walking_00
+c0773,normal,walking,,mcf_normal_walking_03
+c0774,normal,walking,,mcf_normal_walking_02
+c0775,normal,walking,,mcf_normal_walking_01
+c0776,normal,walking,,mcf_normal_walking_02

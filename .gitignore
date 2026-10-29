@@ -220,16 +220,29 @@ __marimo__/
 .streamlit/secrets.toml
 
 # --- fusion_vlm ---
+.DS_Store
+**/.DS_Store
+
+# Model weights, raw datasets and extracted frames (licences forbid redistributing frames)
 models/
 data/raw/
 data/interim/
 data/benchmark/**/frames/
+data/human_check/
+data/full_check/
+
+# Local backups, build products, scratch
 dist/
-results/**/server-*.log
-results/**/aborted_*/
+paper_backup_*/
+data/benchmark/v1_before_fullcheck/
 paper/*.pdf
 paper/*.aux
 paper/*.bbl
 paper/*.blg
 paper/*.log
 paper/*.out
+results/**/aborted_*/
+
+# Logs (the CSV/JSON result files ARE tracked) and the 800 MB raw power trace
+*.log
+results/power/powermetrics.plist

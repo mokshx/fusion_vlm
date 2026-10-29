@@ -1,0 +1,44 @@
+== test: 494 samples, 69 sequences
+label          subtype               
+hard_negative  bending                    25
+               crouching                  22
+               kneeling                   16
+               lying_furniture            41
+               sitting_chair              47
+               sitting_floor               1
+               sitting_furniture          19
+normal         standing                   65
+               walking                    88
+person_down    fall                      160
+               lying_floor_deliberate     10
+label    hard_negative  normal  person_down
+dataset                                    
+mcf                122     109           98
+urfall              49      44           72
+label      hard_negative  normal  person_down
+viewpoint                                    
+elevated             122     109           98
+overhead               0       1           32
+side                  49      43           40
+== dev: 217 samples, 24 sequences
+label          subtype               
+hard_negative  bending                   18
+               crouching                  9
+               kneeling                   5
+               lying_furniture           15
+               sitting_chair             14
+               sitting_furniture         31
+normal         standing                  30
+               walking                   32
+person_down    fall                      58
+               lying_floor_deliberate     5
+label    hard_negative  normal  person_down
+dataset                                    
+mcf                 70      44           38
+urfall              22      18           25
+label      hard_negative  normal  person_down
+viewpoint                                    
+elevated              70      44           38
+overhead               0       3           10
+side                  22      15           15
+sequences in both splits: 0

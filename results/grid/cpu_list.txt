@@ -1,0 +1,13 @@
+lfm-450m:Q8_0 512 1
+lfm-450m:Q4_K_M native 1
+lfm-450m:Q4_K_M 256 1
+lfm-1.6b:Q4_K_M 256 1
+lfm-3b:F16 native 1
+lfm-3b:F16 512 1
+lfm-3b:Q8_0 512 1
+qwen3.5-2b:BF16 512 1
+qwen3.5-2b:Q4_K_M 512 1
+lfm-1.6b:Q4_K_M native 1
+lfm-3b:Q8_0 native 1
+lfm-3b:Q4_K_M native 1
+qwen3.5-2b:Q4_K_M native 1
